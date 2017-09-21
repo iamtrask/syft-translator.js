@@ -1,0 +1,22 @@
+{
+  "name": "syft-translator.js",
+  "version": "1.0.0",
+  "description": "pysyft in syft.js out",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenMined/syft-translator.js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OpenMined/syft-translator.js/issues"
+  },
+  "homepage": "https://github.com/OpenMined/syft-translator.js#readme",
+  "dependencies": {
+    "filbert": "git+https://github.com/OpenMined/filbert.git#master"
+  }
+}
