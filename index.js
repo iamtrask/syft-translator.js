@@ -1,7 +1,7 @@
 'use strict';
 const fs = require('fs');
 const sync = require('./sync');
-const parse = require('filbert').parse_dammit;
+const parse = require('filbert/filbert_loose').parse_dammit;
 const glob = require('glob');
 
 sync();
