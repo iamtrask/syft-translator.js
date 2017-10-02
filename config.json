@@ -1,0 +1,10 @@
+{
+  "*": {
+    "type": "Literal",
+    "match": "\"\"\"",
+    "operations": [
+      { "name": "substring", "arguments": [3, -3] },
+      { "name": "wrap", "arguments": ["/*", "*/"] }
+    ]
+  }
+}
