@@ -6,13 +6,13 @@
 
 The goal of this library is to automatically return a runnable version of pysyft in JS, removing the need to manually keep syft.js and pysyft concurrent with each other.
 
--[Setup](#setup-install-instructions)
-    -[Prerequisites](#prerequisites)
-    -[Installation](#installation)
--[Usage](#usage)
+- [Setup](#setup-install-instructions)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+- [Usage](#usage)
     -[Start](#start)
     -[Tests](#tests)
--[For Contributors](#for-contributors)
+- [For Contributors](#for-contributors)
 
 ## Setup
 
