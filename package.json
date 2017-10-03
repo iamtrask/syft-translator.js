@@ -19,6 +19,7 @@
   "dependencies": {
     "astring": "^1.0.5",
     "filbert": "git+https://github.com/OpenMined/filbert.git#master",
-    "glob": "^7.1.2"
+    "glob": "^7.1.2" ,
+    "fs-extra": "^4.0.2"
   }
 }
