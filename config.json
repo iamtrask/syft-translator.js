@@ -1,10 +1,29 @@
 {
-  "*": {
-    "type": "Literal",
-    "match": "\"\"\"",
-    "operations": [
-      { "name": "substring", "arguments": [3, -3] },
-      { "name": "wrap", "arguments": ["/*", "*/"] }
-    ]
-  }
+  "*": [
+    {
+      "type": "Literal",
+      "match": "\"\"\"",
+      "operations": [
+        { "name": "substring", "arguments": [3, -3] },
+        { "name": "wrap", "arguments": ["/*", "*/"] }
+      ]
+    },
+    {
+      "type": "Literal",
+      "match": "False",
+      "operations": [{ "name": "replace", "arguments": ["false"] }]
+    }
+  ],
+  "syft/he/paillier/basic.py": [
+    {
+      "type": "Program",
+      "operations": [{ "name": "unNestBody" }]
+    }
+  ],
+  "syft/he/paillier/keys.py": [
+    {
+      "type": "Program",
+      "operations": [{ "name": "unNestBody" }]
+    }
+  ]
 }

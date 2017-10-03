@@ -9,6 +9,7 @@ const config = JSON.parse(fsExtra.readFileSync('./config.json'));
 sync();
 
 fsExtra.removeSync('./output');
+fsExtra.removeSync('./output-cast');
 
 glob('temp/**/*.py', (err, files) => {
   for (let i = 0; i < files.length; i++) {
@@ -17,7 +18,12 @@ glob('temp/**/*.py', (err, files) => {
     const fileAST = parse(fileSource);
     console.log(`translating ${ fileName }`);
     try {
-      const translation = astring.generate(astCast(config, fileAST));
+      fsExtra.outputFileSync(`output-ast/${ fileName.substring(7, fileName.length - 2) }json`, JSON.stringify(fileAST, null, 2));
+
+      const fileCastAst = astCast(config, fileAST, fileName.substring(7));
+      fsExtra.outputFileSync(`output-cast-ast/${ fileName.substring(7, fileName.length - 2) }json`, JSON.stringify(fileCastAst, null, 2));
+
+      const translation = astring.generate(fileCastAst);
       fsExtra.outputFileSync(`output/${ fileName.substring(7, fileName.length - 2) }js`, translation);
     } catch (e) {
       console.warn(`There was a problem translating ${ fileName }`);

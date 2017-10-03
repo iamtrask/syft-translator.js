@@ -1,9 +1,9 @@
 /*
     Module math implements mathematical primitives for tensor objects
 */;
-var __all__ = new __pythonRuntime.objects.list(dummy8);
-new __pythonRuntime.objects.tuple('cumprod', 'cumsum', 'ceil', 'dot', 'floor', 'matmul', 'addmm', 'addcmul', dummy9);
-new __pythonRuntime.objects.tuple('addcdiv', 'addmv', 'bmm', 'addbmm', 'baddbmm', 'sigmoid', 'unsqueeze', dummy10);
+var __all__ = new __pythonRuntime.objects.list(dummy17);
+new __pythonRuntime.objects.tuple('cumprod', 'cumsum', 'ceil', 'dot', 'floor', 'matmul', 'addmm', 'addcmul', dummy18);
+new __pythonRuntime.objects.tuple('addcdiv', 'addmv', 'bmm', 'addbmm', 'baddbmm', 'sigmoid', 'unsqueeze', dummy19);
 new __pythonRuntime.objects.tuple('tanh', 'relu', 'zeros', 'ones', 'rand', 'randn', 'mm');
 function zeros() {
 	var __params0 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
