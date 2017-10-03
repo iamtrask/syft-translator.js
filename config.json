@@ -25,5 +25,11 @@
       "type": "Program",
       "operations": [{ "name": "unNestBody" }]
     }
+  ],
+  "syft/he/abstract/keys.py": [
+    {
+      "type": "Program",
+      "operations": [{ "name": "unNestBody" }]
+    }
   ]
 }
