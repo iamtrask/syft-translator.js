@@ -15,9 +15,9 @@ glob('temp/**/*.py', (err, files) => {
   for (let i = 0; i < files.length; i++) {
     const fileName = files[i].substring(5);
     const fileSource = fsExtra.readFileSync(files[i]).toString();
-    const fileAST = parse(fileSource);
     console.log(`translating ${ fileName }`);
     try {
+      const fileAST = parse(fileSource);
       fsExtra.outputFileSync(`output-ast/${ fileName.substring(7, fileName.length - 2) }json`, JSON.stringify(fileAST, null, 2));
 
       const fileCastAst = astCast(config, fileAST, fileName.substring(7));

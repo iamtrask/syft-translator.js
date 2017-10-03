@@ -1,4 +1,5 @@
 module.exports = function astCast(config, json, fileName) {
+  if (json === null) return json;
   for (const fileNameSelector in config) {
     if (!config.hasOwnProperty(fileNameSelector)) continue;
     if (fileNameSelector === '*'
