@@ -62,14 +62,14 @@
 					for (var __filbertIndex0 = 0; __filbertIndex0 < __filbertRight0.length; ++__filbertIndex0) {
 						var rep = __filbertRight0[__filbertIndex0];
 						var t0 = time();
-						this.function(Math.pow(dummy152, this.params));
+						this.function(Math.pow(dummy153, this.params));
 						var t1 = time();
 						results.append(t1 - t0);
 					}
 				} else {
 					for (rep in __filbertRight0) {
 						var t0 = time();
-						this.function(Math.pow(dummy152, this.params));
+						this.function(Math.pow(dummy153, this.params));
 						var t1 = time();
 						results.append(t1 - t0);
 					}
@@ -86,7 +86,7 @@
         */;
 			var lp = LineProfiler();
 			var lp_wrapper = lp(this.function);
-			lp_wrapper(Math.pow(dummy153, this.params));
+			lp_wrapper(Math.pow(dummy154, this.params));
 			lp.print_stats();
 		}).call(this);
 	};

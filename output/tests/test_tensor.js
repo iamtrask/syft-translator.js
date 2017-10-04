@@ -1614,6 +1614,31 @@ self.assertTrue(np.allclose(t3.data, new __pythonRuntime.objects.list(new __pyth
 		}).call(this);
 	};
 }
+{
+	function fmod_Test() {}
+	fmod_Test.prototype.test_fmod_number = function () {
+		return (function () {
+			var t1 = TensorBase(np.array(new __pythonRuntime.objects.list(-3, -2, -1, 1, 2, 3)));
+			t1.fmod_(2);
+			this.assertTrue(np.array_equal(t1.data, np.array(new __pythonRuntime.objects.list(-1, 0, -1, 1, 0, 1))));
+			var t2 = TensorBase(np.array(new __pythonRuntime.objects.list(-3.5, -2.5, -1.5, 1.5, 2.5, 3.5)));
+			t2.fmod_(2.);
+			this.assertTrue(np.array_equal(t2.data, np.array(new __pythonRuntime.objects.list(-1.5, -0.5, -1.5, 1.5, 0.5, 1.5))));
+		}).call(this);
+	};
+	fmod_Test.prototype.test_fmod_tensor = function () {
+		return (function () {
+			var t1 = TensorBase(np.array(new __pythonRuntime.objects.list(-3, -2, -1, 1, 2, 3)));
+			var divisor = np.array(__pythonRuntime.ops.multiply(new __pythonRuntime.objects.list(2), 6));
+			t1.fmod_(divisor);
+			this.assertTrue(np.array_equal(t1.data, np.array(new __pythonRuntime.objects.list(-1, 0, -1, 1, 0, 1))));
+			var t2 = TensorBase(np.array(new __pythonRuntime.objects.list(-3.5, -2.5, -1.5, 1.5, 2.5, 3.5)));
+			divisor = np.array(__pythonRuntime.ops.multiply(new __pythonRuntime.objects.list(2.), 6));
+			t2.fmod_(divisor);
+			this.assertTrue(np.array_equal(t2.data, np.array(new __pythonRuntime.objects.list(-1.5, -0.5, -1.5, 1.5, 0.5, 1.5))));
+		}).call(this);
+	};
+}
 if (__name__ == "__main__") {
 	unittest.main();
 }

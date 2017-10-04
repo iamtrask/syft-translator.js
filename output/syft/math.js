@@ -1,5 +1,14 @@
 /*
     Module math implements mathematical primitives for tensor objects
+
+    Note:The Documentation in this file follows the NumPy Doc. Style;
+         Hence, it is mandatory that future docs added here
+         strictly follow the same, to maintain readability and consistency
+         of the codebase.
+
+    NumPy Documentation Style-
+        http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
+
 */;
 var __all__ = new __pythonRuntime.objects.list(dummy17);
 new __pythonRuntime.objects.tuple('cumprod', 'cumsum', 'ceil', 'dot', 'floor', 'matmul', 'addmm', 'addcmul', dummy18);
@@ -25,7 +34,18 @@ function zeros() {
 	}
 	var dim = __getParam0("dim");
 	return (function () {
-		/*Returns a tensor of zeros*/;
+		/*
+    Returns a tensor of zeros
+
+    Parameters
+    ----------
+    dim:
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		return TensorBase(np.zeros(dim));
 	}).call(this);
 }
@@ -49,7 +69,18 @@ function ones() {
 	}
 	var dim = __getParam1("dim");
 	return (function () {
-		/*Returns a tensor of ones*/;
+		/*
+    Returns a tensor of ones
+
+    Parameters
+    ----------
+    dim:
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		return TensorBase(np.ones(dim));
 	}).call(this);
 }
@@ -73,8 +104,19 @@ function rand() {
 	}
 	var dim = __getParam2("dim");
 	return (function () {
-		/*Returns a tensor with numbers initialized according to a uniform
-    distribution from 0 to 1*/;
+		/*
+    Returns a tensor with numbers initialized according to a uniform
+    distribution from 0 to 1
+
+    Parameters
+    ----------
+    dim:
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		return TensorBase(np.random.rand(dim));
 	}).call(this);
 }
@@ -98,8 +140,19 @@ function randn() {
 	}
 	var dim = __getParam3("dim");
 	return (function () {
-		/*Returns a tensor with initial numbers sampled from a standard normal
-    distribution*/;
+		/*
+    Returns a tensor with initial numbers sampled from a standard normal
+    distribution
+
+    Parameters
+    ----------
+    dim:
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		return TensorBase(np.random.randn(dim));
 	}).call(this);
 }
@@ -124,10 +177,24 @@ function dot() {
 	var tensor1 = __getParam4("tensor1");
 	var tensor2 = __getParam4("tensor2");
 	return (function () {
-		/*Returns inner product of two tensors.
+		/*
+    Returns inner product of two tensors.
 
     N-dimensional tensors are flattened into 1-D vectors, therefore this
     method should only be used on vectors.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+        Tensor to be multiplied
+
+    tensor2: TensorBase
+        Tensor to be multiplied with
+
+    Returns
+    -------
+    ndarray:
+        Output N-Dimensional Array
     */;
 		var tensor1 = _ensure_tensorbase(tensor1);
 		var tensor2 = _ensure_tensorbase(tensor2);
@@ -158,7 +225,8 @@ function matmul() {
 	var tensor1 = __getParam5("tensor1");
 	var tensor2 = __getParam5("tensor2");
 	return (function () {
-		/*Performs matrix multiplication between two tensors.
+		/*
+    Performs matrix multiplication between two tensors.
 
     Exact behavior depends on the input tensors' dimensionality like so:
     * If both tensors are 1-dimensional, their dot product is returned.
@@ -175,6 +243,19 @@ function matmul() {
     * If tensor2 is 1-dimensional, it is converted to a matrix by prepending
     a 1 to its dimensions. This prepended dimension is removed after the
     matrix multiplication.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+        Tensor to be multiplied
+
+    tensor2: TensorBase
+        Tensor to be multiplied with
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
     */;
 		var tensor1 = _ensure_tensorbase(tensor1);
 		var tensor2 = _ensure_tensorbase(tensor2);
@@ -216,8 +297,15 @@ function ceil() {
 
     Behavior is independent of a tensor's shape.
 
-    :input: TensorBase tensor\n
-    :return: TensorBase tensor
+    Parameters
+    ----------
+    tensor: TensorBase
+        input Tensor
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
     */;
 		var tensor = _ensure_tensorbase(tensor);
 		if (tensor.encrypted === True) {
@@ -252,8 +340,16 @@ function floor() {
     for each floating point number x : a <= x
 
     Behavior is independent of a tensor's shape
-    :input: TensorBase tensor\n
-    :return: TensorBase tensor of floored elements .
+
+    Parameters
+    ----------
+    tensor: TensorBase
+        input Tensor
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor; floored values
     */;
 		var tensor = _ensure_tensorbase(tensor);
 		if (tensor.encrypted === True) {
@@ -286,11 +382,18 @@ function cumsum() {
 		/*
     Returns the cumulative sum of the elements along a given dimension
 
-    **Parameters**:
-    * TensorBase tensor
-    * Dimension on which the operation is done
+    Parameters
+    ----------
+    tensor: TensorBase
+        input Tensor
 
-    **returns**  A new 1D Tensor holding the result
+    dim:
+        Dimension on which the operation is done
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor; 1D Tensor
     */;
 		var tensor = _ensure_tensorbase(tensor);
 		if (tensor.encrypted === True) {
@@ -323,11 +426,18 @@ function cumprod() {
 		/*
     Returns the cumulative product of the elements along a given axis
 
-    **Parameters**:
-    * TensorBase tensor
-    * Dimension on which the operation is done
+    Parameters
+    ----------
+    tensor: TensorBase
+        input Tensor
 
-    **returns** A new 1D Tensor holding the result
+    dim:
+        Dimension on which the operation is done
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor; 1D Tensor
     */;
 		var tensor = _ensure_tensorbase(tensor);
 		if (tensor.encrypted === True) {
@@ -356,8 +466,19 @@ function sigmoid() {
 	}
 	var tensor = __getParam10("tensor");
 	return (function () {
-		/* Returns a new tensor holding element wise values of Sigmoid function
-        Sigmoid(x) = 1 / 1+exp(-x)
+		/*
+    Returns a new tensor holding element wise values of Sigmoid function
+    Sigmoid(x) = 1 / 1+exp(-x)
+
+    Parameters
+    ----------
+    tensor: TensorBase
+        input Tensor
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor;
     */;
 		var tensor = _ensure_tensorbase(tensor);
 		if (tensor.encrypted === True) {
@@ -386,8 +507,19 @@ function tanh() {
 	}
 	var tensor = __getParam11("tensor");
 	return (function () {
-		/* Returns a new tensor holding element wise values of tanh function
-        tanh(x) = (e^(x) - e^(-x))/(e^(x) + e^(-x))
+		/*
+    Returns a new tensor holding element wise values of tanh function
+    tanh(x) = (e^(x) - e^(-x))/(e^(x) + e^(-x))
+
+    Parameters
+    ----------
+    tensor: TensorBase
+        input Tensor
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor;
     */;
 		var tensor = _ensure_tensorbase(tensor);
 		if (tensor.encrypted === True) {
@@ -416,7 +548,18 @@ function relu() {
 	}
 	var tensor = __getParam12("tensor");
 	return (function () {
-		/* Return relu function
+		/*
+    Return relu function
+
+    Parameters
+    ----------
+    tensor: TensorBase
+        input Tensor
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor;
     */;
 		var tensor = _ensure_tensorbase(tensor);
 		if (tensor.encrypted === True) {
@@ -449,26 +592,46 @@ function addmm() {
 	var beta = __getParam13("beta", 1);
 	var alpha = __getParam13("alpha", 1);
 	return (function () {
-		/*Performs ((Mat*Beta)+((Tensor1.Tensor2)*Alpha)) and  returns the
+		/*
+    Performs ((Mat*Beta)+((Tensor1.Tensor2)*Alpha)) and  returns the
     result as a Tensor
-        Tensor1.Tensor2 is performed as Matrix product of two array
-        The behavior depends on the arguments in the following way.
-        *If both tensors are 1-dimensional, their dot product is returned.
-        *If both arguments are 2-D they are multiplied like conventional
-        matrices.
 
-        *If either argument is N-D, N > 2, it is treated as a stack of
-        matrices residing in the last two indexes and broadcast
-        accordingly.
+    Tensor1.Tensor2 is performed as Matrix product of two array
+    The behavior depends on the arguments in the following way.
+    *If both tensors are 1-dimensional, their dot product is returned.
+    *If both arguments are 2-D they are multiplied like conventional
+    matrices.
 
-        *If the first argument is 1-D, it is promoted to a matrix by
-        prepending a 1 to its dimensions. After matrix multiplication
-        the prepended 1 is removed.
+    *If either argument is N-D, N > 2, it is treated as a stack of
+    matrices residing in the last two indexes and broadcast
+    accordingly.
 
-        *If the second argument is 1-D, it is promoted to a matrix by
-        appending a 1 to its dimensions. After matrix multiplication
-        the appended 1 is removed.
-        */;
+    *If the first argument is 1-D, it is promoted to a matrix by
+    prepending a 1 to its dimensions. After matrix multiplication
+    the prepended 1 is removed.
+
+    *If the second argument is 1-D, it is promoted to a matrix by
+    appending a 1 to its dimensions. After matrix multiplication
+    the appended 1 is removed.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    tensor2: TensorBase
+
+    mat:
+        Matrix to the operation
+
+    beta: ,optional
+
+    alpha: ,optional
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(tensor2);
 		_ensure_tensorbase(mat);
@@ -503,8 +666,26 @@ function addcmul() {
 	var mat = __getParam14("mat");
 	var value = __getParam14("value", 1);
 	return (function () {
-		/*Performs the element-wise multiplication of tensor1 by tensor2,
-    multiply the result by the scalar value and add it to mat.*/;
+		/*
+    Performs the element-wise multiplication of tensor1 by tensor2,
+    multiply the result by the scalar value and add it to mat.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    tensor2: TensorBase
+
+    mat:
+        Matrix to the operation
+
+    value: ,optional
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(tensor2);
 		_ensure_tensorbase(mat);
@@ -539,8 +720,26 @@ function addcdiv() {
 	var mat = __getParam15("mat");
 	var value = __getParam15("value", 1);
 	return (function () {
-		/*Performs the element-wise division of tensor1 by tensor2, multiply
-    the result by the scalar value and add it to mat.*/;
+		/*
+    Performs the element-wise division of tensor1 by tensor2, multiply
+    the result by the scalar value and add it to mat.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    tensor2: TensorBase
+
+    mat:
+        Matrix to the operation
+
+    value: ,optional
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(tensor2);
 		_ensure_tensorbase(mat);
@@ -576,10 +775,32 @@ function addmv() {
 	var beta = __getParam16("beta", 1);
 	var alpha = __getParam16("alpha", 1);
 	return (function () {
-		/*"Performs a matrix-vector product of the matrix mat and the vector vec.
+		/*
+    Performs a matrix-vector product of the matrix mat and the vector vec.
+
     The vector tensor is added to the final result.
-          tensor1 and vec are 1d tensors
-          out=(beta∗tensor)+(alpha∗(mat@vec2))*/;
+    tensor1 and vec are 1d tensors
+    out=(beta∗tensor)+(alpha∗(mat@vec2))
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    mat:
+        Matrix for the operation
+
+    vec:
+        Vector
+
+    beta: ,optional
+
+    alpha: ,optional
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(vec);
 		_ensure_tensorbase(mat);
@@ -616,24 +837,27 @@ function bmm() {
 	var tensor1 = __getParam17("tensor1");
 	var tensor2 = __getParam17("tensor2");
 	return (function () {
-		/*Performs a batch matrix-matrix product of this tesnor
-        and tensor2. Both tensors must be 3D containing equal number
-        of matrices.
-        If this is a (b x n x m) Tensor, batch2 is a (b x m x p) Tensor,
-        Result will be a (b x n x p) Tensor.
+		/*
+    Performs a batch matrix-matrix product of this tensor
+    and tensor2. Both tensors must be 3D containing equal number
+    of matrices.
 
-        Parameters
-        ----------
-        tensor1 : TensorBase
-            The first operand in the bmm operation
-        tensor2 : TensorBase
-            The second operand in the bmm operation
+    If this is a (b x n x m) Tensor, batch2 is a (b x m x p) Tensor,
+    Result will be a (b x n x p) Tensor.
 
-        Returns
-        -------
-        TensorBase
-            Computed tensor result for bmm operation
-        */;
+    Parameters
+    ----------
+    tensor1 : TensorBase
+        The first operand in the bmm operation
+
+    tensor2 : TensorBase
+        The second operand in the bmm operation
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor; with bmm operation
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(tensor2);
 		if (tensor2.data.ndim != 3) {
@@ -672,14 +896,36 @@ function addbmm() {
 	var beta = __getParam18("beta", 1);
 	var alpha = __getParam18("alpha", 1);
 	return (function () {
-		/*Performs a batch matrix-matrix product of matrices stored in
+		/*
+    Performs a batch matrix-matrix product of matrices stored in
     batch1(tensor1) and batch2(tensor2),
-     with a reduced add step (all matrix multiplications get accumulated along
-     the first dimension).
-     mat is added to the final result.
-     res=(beta∗M)+(alpha∗sum(batch1i@batch2i, i=0, b))
-    * batch1 and batch2 must be 3D Tensors each containing the same number of
-    matrices.*/;
+    with a reduced add step (all matrix multiplications get accumulated along
+    the first dimension).
+    mat is added to the final result.
+
+    res=(beta∗M)+(alpha∗sum(batch1i@batch2i, i=0, b))
+
+    batch1 and batch2 must be 3D Tensors each containing the same number of
+    matrices.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    tensor2: TensorBase
+
+    mat:
+        Matrix to the operation
+
+    beta: ,optional
+
+    alpha: ,optional
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(tensor2);
 		_ensure_tensorbase(mat);
@@ -738,11 +984,33 @@ function baddbmm() {
 	var beta = __getParam21("beta", 1);
 	var alpha = __getParam21("alpha", 1);
 	return (function () {
-		/*Performs a batch matrix-matrix product of matrices in batch1(tensor1)
+		/*
+    Performs a batch matrix-matrix product of matrices in batch1(tensor1)
     and batch2(tensor2). mat is added to the final result.
-      resi=(beta∗Mi)+(alpha∗batch1i×batch2i)
-      *batch1 and batch2 must be 3D Tensors each containing the same number
-      of matrices.*/;
+
+    resi=(beta∗Mi)+(alpha∗batch1i×batch2i)
+
+    batch1 and batch2 must be 3D Tensors each containing the same number
+    of matrices.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    tensor2: TensorBase
+
+    mat:
+        Matrix to the operation
+
+    beta: ,optional
+
+    alpha: ,optional
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(tensor2);
 		_ensure_tensorbase(mat);
@@ -785,7 +1053,23 @@ function transpose() {
 	return (function () {
 		/*
     Performs tensor transpose operation, tranposing dim0 and dim1.
+
     Returns a tranposed TensorBase.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    dim0:
+        Dimension 0
+
+    dim1:
+        Dimension 1
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
     */;
 		var tensor1 = _ensure_tensorbase(tensor1);
 		var num_dims = __pythonRuntime.functions.len(tensor1.data.shape);
@@ -827,6 +1111,18 @@ function unsqueeze() {
 		/*
     Performs 'unsqueeze' operation, returning a new tensor with a dimension
     of size one inserted at the specified position.
+
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    dim:
+        Dimension
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
     */;
 		var tensor1 = _ensure_tensorbase(tensor1);
 		var num_dims = __pythonRuntime.functions.len(tensor1.data.shape);
@@ -866,9 +1162,17 @@ function mm() {
     If :attr:`tensor1` is a `n x m` Tensor, :attr:`tensor2` is a `m x p` Tensor,
     output will be a `n x p` Tensor.
 
-    Args:
-        tensor1 (Tensor): First Tensor to be multiplied
-        tensor2 (Tensor): Second Tensor to be multiplied*/;
+    Parameters
+    ----------
+    tensor1: TensorBase
+
+    tensor2: TensorBase
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
 		_ensure_tensorbase(tensor1);
 		_ensure_tensorbase(tensor2);
 		if (tensor1.encrypted || tensor2.encrypted) {
@@ -876,5 +1180,52 @@ function mm() {
 		} else {
 			return TensorBase(np.array(np.matmul(tensor1.data, tensor2.data)));
 		}
+	}).call(this);
+}
+function fmod() {
+	var __params25 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex25 = 0;
+	var __args25 = arguments;
+	function __getParam25(v, d) {
+		var r = d;
+		if (__params25) {
+			if (__formalsIndex25 < __params25.formals.length) {
+				r = __params25.formals[__formalsIndex25++];
+			} else if ((v in __params25.keywords)) {
+				r = __params25.keywords[v];
+				delete __params25.keywords[v];
+			}
+		} else if (__formalsIndex25 < __args25.length) {
+			r = __args25[__formalsIndex25++];
+		}
+		return r;
+	}
+	var tensor = __getParam25("tensor");
+	var divisor = __getParam25("divisor");
+	return (function () {
+		/*
+    Performs the element-wise division of tensor by divisor.
+
+    Parameters
+    ----------
+    tensor: TensorBase
+
+    divisor: number or TensorBase
+
+    Returns
+    -------
+    TensorBase:
+        Output Tensor
+    */;
+		if (tensor.encrypted) {
+			return NotImplemented;
+		}
+		if (isinstance(divisor, TensorBase)) {
+			if (divisor.encrypted) {
+				return NotImplemented;
+			}
+			var divisor = divisor.data;
+		}
+		return TensorBase(np.fmod(tensor.data, divisor));
 	}).call(this);
 }

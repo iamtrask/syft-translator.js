@@ -16,6 +16,9 @@ glob('temp/**/*.py', (err, files) => {
     const fileName = files[i].substring(5);
     const fileSource = fsExtra.readFileSync(files[i]).toString();
     console.log(`translating ${ fileName }`);
+    if (fileName === 'PySyft/syft/tensor.py') {
+      global.debug = true;
+    }
     try {
       const fileAST = parse(fileSource);
       fsExtra.outputFileSync(`output-ast/${ fileName.substring(7, fileName.length - 2) }json`, JSON.stringify(fileAST, null, 2));

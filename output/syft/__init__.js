@@ -8,3 +8,4 @@ s = __pythonRuntime.ops.add(s, __pythonRuntime.ops.add(__pythonRuntime.ops.add(_
 s = __pythonRuntime.ops.add(s, __pythonRuntime.ops.add(__pythonRuntime.ops.add(__pythonRuntime.ops.add(__pythonRuntime.ops.add(__pythonRuntime.functions.str(transpose), __pythonRuntime.functions.str(rand)), __pythonRuntime.functions.str(randn)), __pythonRuntime.functions.str(ones)), __pythonRuntime.functions.str(zeros)));
 s = __pythonRuntime.ops.add(s, __pythonRuntime.functions.str(unsqueeze));
 s = __pythonRuntime.ops.add(s, __pythonRuntime.functions.str(mm));
+s = __pythonRuntime.ops.add(s, __pythonRuntime.functions.str(fmod));

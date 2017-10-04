@@ -274,7 +274,7 @@
 				var seckey2 = __filbertTmp40[1];
 			}
 			sk_serialized;
-			this.assertTrue(pubkey.pk == pubkey2.pk && dummy257);
+			this.assertTrue(pubkey.pk == pubkey2.pk && dummy262);
 			seckey.sk == seckey2.sk;
 		}).call(this);
 	};
