@@ -1,10 +1,10 @@
-{
-	function Benchmark() {
-		/*
+class Benchmark {
+	/*
     This is a testing class for the benchmarking of functions.
     Input of the Benchmark class should be the function to test
     and the params (optional)
     */;
+	__init__() {
 		var __params0 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 		var __formalsIndex0 = 0;
 		var __args0 = arguments;
@@ -27,12 +27,10 @@
 		if (__params0) {
 			params = __params0.keywords;
 		}
-		return (function () {
-			this.function = function;
-			this.params = params;
-		}).call(this);
+		this.function = function;
+		this.params = params;
 	}
-	Benchmark.prototype.exec_time = function () {
+	exec_time() {
 		var __params1 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 		var __formalsIndex1 = 0;
 		var __args1 = arguments;
@@ -51,43 +49,39 @@
 			return r;
 		}
 		var reps = __getParam1("reps", 1);
-		return (function () {
-			/*
+		"""
         Calls function x-times and returns an array of computed execution times
-        */;
-			var results = new __pythonRuntime.objects.list();
-			{
-				var __filbertRight0 = __pythonRuntime.functions.range(reps);
-				if (__filbertRight0 instanceof Array) {
-					for (var __filbertIndex0 = 0; __filbertIndex0 < __filbertRight0.length; ++__filbertIndex0) {
-						var rep = __filbertRight0[__filbertIndex0];
-						var t0 = time();
-						this.function(Math.pow(dummy153, this.params));
-						var t1 = time();
-						results.append(t1 - t0);
-					}
-				} else {
-					for (rep in __filbertRight0) {
-						var t0 = time();
-						this.function(Math.pow(dummy153, this.params));
-						var t1 = time();
-						results.append(t1 - t0);
-					}
+        """;
+		var results = new __pythonRuntime.objects.list();
+		{
+			var __filbertRight0 = __pythonRuntime.functions.range(reps);
+			if (__filbertRight0 instanceof Array) {
+				for (var __filbertIndex0 = 0; __filbertIndex0 < __filbertRight0.length; ++__filbertIndex0) {
+					var rep = __filbertRight0[__filbertIndex0];
+					var t0 = time();
+					this.function(Math.pow(dummy176, this.params));
+					var t1 = time();
+					results.append(t1 - t0);
+				}
+			} else {
+				for (rep in __filbertRight0) {
+					var t0 = time();
+					this.function(Math.pow(dummy176, this.params));
+					var t1 = time();
+					results.append(t1 - t0);
 				}
 			}
-			return results;
-		}).call(this);
-	};
-	Benchmark.prototype.profile_lines = function () {
-		return (function () {
-			/*
+		}
+		return results;
+	}
+	profile_lines() {
+		"""
         A simple wrapper to call the line_profiler.
         Prints the line_profiler output
-        */;
-			var lp = LineProfiler();
-			var lp_wrapper = lp(this.function);
-			lp_wrapper(Math.pow(dummy154, this.params));
-			lp.print_stats();
-		}).call(this);
-	};
+        """;
+		var lp = LineProfiler();
+		var lp_wrapper = lp(this.function);
+		lp_wrapper(Math.pow(dummy177, this.params));
+		lp.print_stats();
+	}
 }

@@ -17,9 +17,7 @@ function read() {
 		return r;
 	}
 	var fname = __getParam0("fname");
-	return (function () {
-		return open(os.path.join(os.path.dirname(__file__), fname)).read();
-	}).call(this);
+	return open(os.path.join(os.path.dirname(__file__), fname)).read();
 }
 var requirements = read(__pythonRuntime.utils.createParamsObj('requirements.txt')).split();
 setup();

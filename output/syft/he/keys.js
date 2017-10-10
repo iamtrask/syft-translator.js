@@ -17,7 +17,5 @@ function Paillier() {
 		return r;
 	}
 	var n_length = __getParam0("n_length", 1024);
-	return (function () {
-		return syft.he.paillier.keys.KeyPair().generate(n_length);
-	}).call(this);
+	return syft.he.paillier.keys.KeyPair().generate(n_length);
 }
