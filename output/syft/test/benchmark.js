@@ -59,14 +59,14 @@ class Benchmark {
 				for (var __filbertIndex0 = 0; __filbertIndex0 < __filbertRight0.length; ++__filbertIndex0) {
 					var rep = __filbertRight0[__filbertIndex0];
 					var t0 = time();
-					this.function(Math.pow(dummy176, this.params));
+					this.function(Math.pow(dummy194, this.params));
 					var t1 = time();
 					results.append(t1 - t0);
 				}
 			} else {
 				for (rep in __filbertRight0) {
 					var t0 = time();
-					this.function(Math.pow(dummy176, this.params));
+					this.function(Math.pow(dummy194, this.params));
 					var t1 = time();
 					results.append(t1 - t0);
 				}
@@ -81,7 +81,7 @@ class Benchmark {
         """;
 		var lp = LineProfiler();
 		var lp_wrapper = lp(this.function);
-		lp_wrapper(Math.pow(dummy177, this.params));
+		lp_wrapper(Math.pow(dummy195, this.params));
 		lp.print_stats();
 	}
 }

@@ -1,4 +1,4 @@
-{
+class AbstractSecretKey {
 	__init__() {
 		var __params0 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 		var __formalsIndex0 = 0;
@@ -45,7 +45,7 @@
 		return NotImplemented;
 	}
 }
-{
+class AbstractPublicKey {
 	__init__() {
 		var __params3 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 		var __formalsIndex3 = 0;
@@ -92,7 +92,7 @@
 		return NotImplemented;
 	}
 }
-{
+class AbstractKeyPair {
 	__init__() {
 		"";
 	}

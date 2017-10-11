@@ -134,8 +134,7 @@ function equal() {
 		return NotImplemented;
 	}
 	var left = tensor1.data.shape == tensor2.data.shape;
-	var right = np.allclose(tensor1.data, tensor2.data);
-	return left && right;
+	return left && np.allclose(tensor1.data, tensor2.data);
 }
 class TensorBase {}
 function ne_() {
@@ -391,7 +390,7 @@ function histc() {
 		np.array(self.data) = __filbertTmp133[0];
 		var bins = __filbertTmp133[1];
 	}
-	var dummy113 = new __pythonRuntime.objects.tuple(min, max);
+	var dummy116 = new __pythonRuntime.objects.tuple(min, max);
 	return new TensorBase(hist);
 }
 function scatter_() {
@@ -456,11 +455,11 @@ function scatter_() {
 	var idx_xsection_shape = __pythonRuntime.ops.add(index.data.shape._pySlice(null, dim, null), index.data.shape._pySlice(__pythonRuntime.ops.add(dim, 1), null, null));
 	var self_xsection_shape = __pythonRuntime.ops.add(self.data.shape._pySlice(null, dim, null), self.data.shape._pySlice(__pythonRuntime.ops.add(dim, 1), null, null));
 	if (idx_xsection_shape != self_xsection_shape) {
-		ValueError(__pythonRuntime.ops.add(__pythonRuntime.ops.add("Except for dimension ", __pythonRuntime.functions.str(dim)), dummy120));
+		ValueError(__pythonRuntime.ops.add(__pythonRuntime.ops.add("Except for dimension ", __pythonRuntime.functions.str(dim)), dummy123));
 		", all dimensions of index and output should be the same size";
 	}
 	if (index.data >= self.data.shape[__pythonRuntime.ops.subscriptIndex(self.data.shape, dim)]) {
-		dummy122.any() || (index.data < 0).any();
+		dummy125.any() || (index.data < 0).any();
 	}
 	IndexError();
 	"The values of index must be between 0 and (self.data.shape[dim] -1)";
@@ -489,7 +488,7 @@ function scatter_() {
 		slc[__pythonRuntime.ops.subscriptIndex(slc, dim)] = i;
 		return slc;
 	}
-	var idx = new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(__pythonRuntime.ops.multiply(dummy125, np.indices(idx_xsection_shape).reshape(index.data.ndim - 1, -1))));
+	var idx = new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(__pythonRuntime.ops.multiply(dummy128, np.indices(idx_xsection_shape).reshape(index.data.ndim - 1, -1))));
 	index.data[__pythonRuntime.ops.subscriptIndex(index.data, make_slice(__pythonRuntime.utils.createParamsObj(index.data, dim, i)))].reshape(1, -1)[__pythonRuntime.ops.subscriptIndex(index.data[__pythonRuntime.ops.subscriptIndex(index.data, make_slice(__pythonRuntime.utils.createParamsObj(index.data, dim, i)))].reshape(1, -1), 0)];
 	{
 		var __filbertRight4 = __pythonRuntime.functions.range(index.data.shape[__pythonRuntime.ops.subscriptIndex(index.data.shape, dim)]);
@@ -501,17 +500,17 @@ function scatter_() {
 			for (i in __filbertRight4) {}
 		}
 	}
-	var dummy128 = __pythonRuntime.functions.list(np.concatenate(idx, axis, 1));
+	var dummy131 = __pythonRuntime.functions.list(np.concatenate(idx, axis, 1));
 	idx.insert(dim, idx.pop());
 	if (!np.isscalar(src)) {
 		var src = _ensure_tensorbase(__pythonRuntime.utils.createParamsObj(src));
 		if (index.data.shape[__pythonRuntime.ops.subscriptIndex(index.data.shape, dim)] > src.data.shape[__pythonRuntime.ops.subscriptIndex(src.data.shape, dim)]) {
-			IndexError(__pythonRuntime.ops.add(__pythonRuntime.ops.add("Dimension ", __pythonRuntime.functions.str(dim)), dummy131));
+			IndexError(__pythonRuntime.ops.add(__pythonRuntime.ops.add("Dimension ", __pythonRuntime.functions.str(dim)), dummy134));
 			"of index can not be bigger than that of src ";
 		}
 		var src_shape = __pythonRuntime.ops.add(src.data.shape._pySlice(null, dim, null), src.data.shape._pySlice(__pythonRuntime.ops.add(dim, 1), null, null));
 		if (idx_xsection_shape != src_shape) {
-			ValueError(__pythonRuntime.ops.add("Except for dimension ", dummy134));
+			ValueError(__pythonRuntime.ops.add("Except for dimension ", dummy137));
 			__pythonRuntime.ops.add(__pythonRuntime.functions.str(dim), ", all dimensions of index and src should be the same size");
 		}
 		var src_idx = __pythonRuntime.functions.list(idx);
@@ -569,7 +568,7 @@ function gather() {
 	var idx_xsection_shape = __pythonRuntime.ops.add(index.data.shape._pySlice(null, dim, null), index.data.shape._pySlice(__pythonRuntime.ops.add(dim, 1), null, null));
 	var self_xsection_shape = __pythonRuntime.ops.add(self.data.shape._pySlice(null, dim, null), self.data.shape._pySlice(__pythonRuntime.ops.add(dim, 1), null, null));
 	if (idx_xsection_shape != self_xsection_shape) {
-		ValueError(__pythonRuntime.ops.add(__pythonRuntime.ops.add("Except for dimension ", __pythonRuntime.functions.str(dim)), dummy142));
+		ValueError(__pythonRuntime.ops.add(__pythonRuntime.ops.add("Except for dimension ", __pythonRuntime.functions.str(dim)), dummy145));
 		", all dimensions of index and self should be the same size";
 	}
 	if (index.data.dtype != np.dtype('int_')) {
@@ -994,7 +993,7 @@ function mv() {
 	}
 	return mv(__pythonRuntime.utils.createParamsObj(self, tensorvector));
 }
-function masked_scatter_() {
+function narrow() {
 	var __params147 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 	var __formalsIndex147 = 0;
 	var __args147 = arguments;
@@ -1013,8 +1012,75 @@ function masked_scatter_() {
 		return r;
 	}
 	var self = __getParam147("self");
-	var mask = __getParam147("mask");
-	var source = __getParam147("source");
+	var dim = __getParam147("dim");
+	var start = __getParam147("start");
+	var length = __getParam147("length");
+	/*
+        Returns a new tensor that is a narrowed version of this tensor.
+        The dimension ``dim`` is narrowed from ``start`` to ``start`` + ``length``.
+
+        Parameters
+        ----------
+        dim: int
+            dimension along which to narrow
+        start: int
+            starting dimension
+        length: int
+            length from start to narrow to
+
+        Returns
+        -------
+        narrowed version of this tensor
+        */;
+	var dim = dim;
+	if (dim >= 0) {
+		__pythonRuntime.ops.add(dim, self.dim());
+	}
+	if (self.encrypted) {
+		NotImplemented;
+	}
+	if (!isinstance(dim, int) || !isinstance(start, int) || !isinstance(length, int)) {
+		TypeError("narrow received an invalid combination of arguments:\n");
+		f;
+		"  got ({dim.__class__.__name__} dim, ";
+		f;
+		"{start.__class__.__name__} start, ";
+		f;
+		"{length.__class__.__name__} length), ";
+		"but expected (int dim, int start, int length)";
+	}
+	if (dim >= self.data.ndim || dim < -self.data.ndim) {
+		IndexError("dim value is out of range");
+	}
+	if (start >= self.data.shape[__pythonRuntime.ops.subscriptIndex(self.data.shape, dim)] || start < 0) {
+		IndexError("start value is out of range");
+	}
+	if (length > self.data.shape[__pythonRuntime.ops.subscriptIndex(self.data.shape, dim)] - start || length <= 0) {
+		IndexError("length value is out of range");
+	}
+	return new TensorBase(self.data.take(__pythonRuntime.functions.range(start, __pythonRuntime.ops.add(start, length)), axis, dim));
+}
+function masked_scatter_() {
+	var __params148 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex148 = 0;
+	var __args148 = arguments;
+	function __getParam148(v, d) {
+		var r = d;
+		if (__params148) {
+			if (__formalsIndex148 < __params148.formals.length) {
+				r = __params148.formals[__formalsIndex148++];
+			} else if ((v in __params148.keywords)) {
+				r = __params148.keywords[v];
+				delete __params148.keywords[v];
+			}
+		} else if (__formalsIndex148 < __args148.length) {
+			r = __args148[__formalsIndex148++];
+		}
+		return r;
+	}
+	var self = __getParam148("self");
+	var mask = __getParam148("mask");
+	var source = __getParam148("source");
 	/*
         Copies elements from ``source`` into this tensor at positions
         where the ``mask`` is true.
@@ -1044,9 +1110,9 @@ function masked_scatter_() {
 	var mask_self_iter = np.nditer(new __pythonRuntime.objects.list(mask.data, self.data));
 	var source_iter = np.nditer(source.data);
 	var out_flat = (function () {
-		var __tmpList148 = new __pythonRuntime.objects.list();
-		dummy162
-		return __tmpList148;
+		var __tmpList149 = new __pythonRuntime.objects.list();
+		dummy174
+		return __tmpList149;
 	})();
 	if (m == 0) {
 		source_iter.__next__().item();
@@ -1055,41 +1121,41 @@ function masked_scatter_() {
 		var __filbertRight5 = mask_self_iter;
 		if (__filbertRight5 instanceof Array) {
 			for (var __filbertIndex5 = 0; __filbertIndex5 < __filbertRight5.length; ++__filbertIndex5) {
-				var __filbertTmp149 = __filbertRight5[__filbertIndex5];
-				var m = __filbertTmp149[0];
-				var s = __filbertTmp149[1];
+				var __filbertTmp150 = __filbertRight5[__filbertIndex5];
+				var m = __filbertTmp150[0];
+				var s = __filbertTmp150[1];
 			}
 		} else {
-			for (var __filbertTmp150 = mask_self_iter in __filbertRight5) {
-				m = __filbertTmp150[0];
-				s = __filbertTmp150[1];
+			for (var __filbertTmp151 = mask_self_iter in __filbertRight5) {
+				m = __filbertTmp151[0];
+				s = __filbertTmp151[1];
 			}
 		}
 	}
-	dummy165.data = np.reshape(out_flat, self.data.shape);
+	dummy177.data = np.reshape(out_flat, self.data.shape);
 	return self;
 }
 function masked_fill_() {
-	var __params151 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex151 = 0;
-	var __args151 = arguments;
-	function __getParam151(v, d) {
+	var __params152 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex152 = 0;
+	var __args152 = arguments;
+	function __getParam152(v, d) {
 		var r = d;
-		if (__params151) {
-			if (__formalsIndex151 < __params151.formals.length) {
-				r = __params151.formals[__formalsIndex151++];
-			} else if ((v in __params151.keywords)) {
-				r = __params151.keywords[v];
-				delete __params151.keywords[v];
+		if (__params152) {
+			if (__formalsIndex152 < __params152.formals.length) {
+				r = __params152.formals[__formalsIndex152++];
+			} else if ((v in __params152.keywords)) {
+				r = __params152.keywords[v];
+				delete __params152.keywords[v];
 			}
-		} else if (__formalsIndex151 < __args151.length) {
-			r = __args151[__formalsIndex151++];
+		} else if (__formalsIndex152 < __args152.length) {
+			r = __args152[__formalsIndex152++];
 		}
 		return r;
 	}
-	var self = __getParam151("self");
-	var mask = __getParam151("mask");
-	var value = __getParam151("value");
+	var self = __getParam152("self");
+	var mask = __getParam152("mask");
+	var value = __getParam152("value");
 	/*
         Fills elements of this ``tensor`` with value where ``mask`` is true.
         in-place
@@ -1120,31 +1186,6 @@ function masked_fill_() {
 	return self;
 }
 function masked_select() {
-	var __params152 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex152 = 0;
-	var __args152 = arguments;
-	function __getParam152(v, d) {
-		var r = d;
-		if (__params152) {
-			if (__formalsIndex152 < __params152.formals.length) {
-				r = __params152.formals[__formalsIndex152++];
-			} else if ((v in __params152.keywords)) {
-				r = __params152.keywords[v];
-				delete __params152.keywords[v];
-			}
-		} else if (__formalsIndex152 < __args152.length) {
-			r = __args152[__formalsIndex152++];
-		}
-		return r;
-	}
-	var self = __getParam152("self");
-	var mask = __getParam152("mask");
-	/*
-        See :func:`tensor.masked_select`
-        */;
-	return masked_select(__pythonRuntime.utils.createParamsObj(self, mask));
-}
-function eq() {
 	var __params153 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 	var __formalsIndex153 = 0;
 	var __args153 = arguments;
@@ -1163,7 +1204,32 @@ function eq() {
 		return r;
 	}
 	var self = __getParam153("self");
-	var t = __getParam153("t");
+	var mask = __getParam153("mask");
+	/*
+        See :func:`tensor.masked_select`
+        */;
+	return masked_select(__pythonRuntime.utils.createParamsObj(self, mask));
+}
+function eq() {
+	var __params154 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex154 = 0;
+	var __args154 = arguments;
+	function __getParam154(v, d) {
+		var r = d;
+		if (__params154) {
+			if (__formalsIndex154 < __params154.formals.length) {
+				r = __params154.formals[__formalsIndex154++];
+			} else if ((v in __params154.keywords)) {
+				r = __params154.keywords[v];
+				delete __params154.keywords[v];
+			}
+		} else if (__formalsIndex154 < __args154.length) {
+			r = __args154[__formalsIndex154++];
+		}
+		return r;
+	}
+	var self = __getParam154("self");
+	var t = __getParam154("t");
 	/*
         Checks if two Tensors are equal.
 
@@ -1187,25 +1253,25 @@ function eq() {
 	return new TensorBase(np.equal(self.data, _ensure_tensorbase(__pythonRuntime.utils.createParamsObj(t)).data));
 }
 function eq_() {
-	var __params154 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex154 = 0;
-	var __args154 = arguments;
-	function __getParam154(v, d) {
+	var __params155 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex155 = 0;
+	var __args155 = arguments;
+	function __getParam155(v, d) {
 		var r = d;
-		if (__params154) {
-			if (__formalsIndex154 < __params154.formals.length) {
-				r = __params154.formals[__formalsIndex154++];
-			} else if ((v in __params154.keywords)) {
-				r = __params154.keywords[v];
-				delete __params154.keywords[v];
+		if (__params155) {
+			if (__formalsIndex155 < __params155.formals.length) {
+				r = __params155.formals[__formalsIndex155++];
+			} else if ((v in __params155.keywords)) {
+				r = __params155.keywords[v];
+				delete __params155.keywords[v];
 			}
-		} else if (__formalsIndex154 < __args154.length) {
-			r = __args154[__formalsIndex154++];
+		} else if (__formalsIndex155 < __args155.length) {
+			r = __args155[__formalsIndex155++];
 		}
 		return r;
 	}
-	var self = __getParam154("self");
-	var t = __getParam154("t");
+	var self = __getParam155("self");
+	var t = __getParam155("t");
 	/*
         Checks if two Tensors are equal, in-place
 
@@ -1230,43 +1296,6 @@ function eq_() {
 	return self;
 }
 function mm() {
-	var __params155 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex155 = 0;
-	var __args155 = arguments;
-	function __getParam155(v, d) {
-		var r = d;
-		if (__params155) {
-			if (__formalsIndex155 < __params155.formals.length) {
-				r = __params155.formals[__formalsIndex155++];
-			} else if ((v in __params155.keywords)) {
-				r = __params155.keywords[v];
-				delete __params155.keywords[v];
-			}
-		} else if (__formalsIndex155 < __args155.length) {
-			r = __args155[__formalsIndex155++];
-		}
-		return r;
-	}
-	var self = __getParam155("self");
-	var tensor = __getParam155("tensor");
-	/*
-        Performs a matrix multiplication of two Tensors.
-
-        If :attr:`tensor1` is a `n x m` Tensor, :attr:`tensor2` is a `m x p` Tensor,
-        output will be a `n x p` Tensor.
-
-        Parameters
-        ----------
-        tensor: Tensor
-            Second Tensor to be multiplied
-
-        Returns
-        -------
-        n x p Output Tensor
-        */;
-	return syft.mm(self, tensor);
-}
-function fmod() {
 	var __params156 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 	var __formalsIndex156 = 0;
 	var __args156 = arguments;
@@ -1285,7 +1314,44 @@ function fmod() {
 		return r;
 	}
 	var self = __getParam156("self");
-	var divisor = __getParam156("divisor");
+	var tensor = __getParam156("tensor");
+	/*
+        Performs a matrix multiplication of two Tensors.
+
+        If :attr:`tensor1` is a `n x m` Tensor, :attr:`tensor2` is a `m x p` Tensor,
+        output will be a `n x p` Tensor.
+
+        Parameters
+        ----------
+        tensor: Tensor
+            Second Tensor to be multiplied
+
+        Returns
+        -------
+        n x p Output Tensor
+        */;
+	return syft.mm(self, tensor);
+}
+function fmod() {
+	var __params157 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex157 = 0;
+	var __args157 = arguments;
+	function __getParam157(v, d) {
+		var r = d;
+		if (__params157) {
+			if (__formalsIndex157 < __params157.formals.length) {
+				r = __params157.formals[__formalsIndex157++];
+			} else if ((v in __params157.keywords)) {
+				r = __params157.keywords[v];
+				delete __params157.keywords[v];
+			}
+		} else if (__formalsIndex157 < __args157.length) {
+			r = __args157[__formalsIndex157++];
+		}
+		return r;
+	}
+	var self = __getParam157("self");
+	var divisor = __getParam157("divisor");
 	/*
         Performs the element-wise division of tensor by divisor and returns
         a new Tensor.
@@ -1311,25 +1377,25 @@ function fmod() {
 	return syft.math.fmod(self, divisor);
 }
 function fmod_() {
-	var __params157 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex157 = 0;
-	var __args157 = arguments;
-	function __getParam157(v, d) {
+	var __params158 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex158 = 0;
+	var __args158 = arguments;
+	function __getParam158(v, d) {
 		var r = d;
-		if (__params157) {
-			if (__formalsIndex157 < __params157.formals.length) {
-				r = __params157.formals[__formalsIndex157++];
-			} else if ((v in __params157.keywords)) {
-				r = __params157.keywords[v];
-				delete __params157.keywords[v];
+		if (__params158) {
+			if (__formalsIndex158 < __params158.formals.length) {
+				r = __params158.formals[__formalsIndex158++];
+			} else if ((v in __params158.keywords)) {
+				r = __params158.keywords[v];
+				delete __params158.keywords[v];
 			}
-		} else if (__formalsIndex157 < __args157.length) {
-			r = __args157[__formalsIndex157++];
+		} else if (__formalsIndex158 < __args158.length) {
+			r = __args158[__formalsIndex158++];
 		}
 		return r;
 	}
-	var self = __getParam157("self");
-	var divisor = __getParam157("divisor");
+	var self = __getParam158("self");
+	var divisor = __getParam158("divisor");
 	/*
         Performs the element-wise division of tensor by divisor inline.
 
@@ -1354,42 +1420,6 @@ function fmod_() {
 	return self;
 }
 function half() {
-	var __params158 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex158 = 0;
-	var __args158 = arguments;
-	function __getParam158(v, d) {
-		var r = d;
-		if (__params158) {
-			if (__formalsIndex158 < __params158.formals.length) {
-				r = __params158.formals[__formalsIndex158++];
-			} else if ((v in __params158.keywords)) {
-				r = __params158.keywords[v];
-				delete __params158.keywords[v];
-			}
-		} else if (__formalsIndex158 < __args158.length) {
-			r = __args158[__formalsIndex158++];
-		}
-		return r;
-	}
-	var self = __getParam158("self");
-	/*
-        casts the tensor to half-precision float type.
-
-        Parameters
-        ----------
-
-        Returns
-        -------
-        TensorBase:
-            Output Tensor
-        */;
-	if (self.encrypted) {
-		return NotImplemented;
-	} else {
-		return new TensorBase(np.array(self).astype('float16'));
-	}
-}
-function lerp() {
 	var __params159 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 	var __formalsIndex159 = 0;
 	var __args159 = arguments;
@@ -1408,8 +1438,44 @@ function lerp() {
 		return r;
 	}
 	var self = __getParam159("self");
-	var tensor = __getParam159("tensor");
-	var weight = __getParam159("weight");
+	/*
+        casts the tensor to half-precision float type.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        TensorBase:
+            Output Tensor
+        */;
+	if (self.encrypted) {
+		return NotImplemented;
+	} else {
+		return new TensorBase(np.array(self).astype('float16'));
+	}
+}
+function lerp() {
+	var __params160 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex160 = 0;
+	var __args160 = arguments;
+	function __getParam160(v, d) {
+		var r = d;
+		if (__params160) {
+			if (__formalsIndex160 < __params160.formals.length) {
+				r = __params160.formals[__formalsIndex160++];
+			} else if ((v in __params160.keywords)) {
+				r = __params160.keywords[v];
+				delete __params160.keywords[v];
+			}
+		} else if (__formalsIndex160 < __args160.length) {
+			r = __args160[__formalsIndex160++];
+		}
+		return r;
+	}
+	var self = __getParam160("self");
+	var tensor = __getParam160("tensor");
+	var weight = __getParam160("weight");
 	/*
         Performs 'lerp' operation, returning a new tensor calculated by interpolation
         of two tensors using a weight.
@@ -1432,26 +1498,26 @@ function lerp() {
 	return syft.math.lerp(self, tensor, weight);
 }
 function lerp_() {
-	var __params160 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex160 = 0;
-	var __args160 = arguments;
-	function __getParam160(v, d) {
+	var __params161 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex161 = 0;
+	var __args161 = arguments;
+	function __getParam161(v, d) {
 		var r = d;
-		if (__params160) {
-			if (__formalsIndex160 < __params160.formals.length) {
-				r = __params160.formals[__formalsIndex160++];
-			} else if ((v in __params160.keywords)) {
-				r = __params160.keywords[v];
-				delete __params160.keywords[v];
+		if (__params161) {
+			if (__formalsIndex161 < __params161.formals.length) {
+				r = __params161.formals[__formalsIndex161++];
+			} else if ((v in __params161.keywords)) {
+				r = __params161.keywords[v];
+				delete __params161.keywords[v];
 			}
-		} else if (__formalsIndex160 < __args160.length) {
-			r = __args160[__formalsIndex160++];
+		} else if (__formalsIndex161 < __args161.length) {
+			r = __args161[__formalsIndex161++];
 		}
 		return r;
 	}
-	var self = __getParam160("self");
-	var tensor = __getParam160("tensor");
-	var weight = __getParam160("weight");
+	var self = __getParam161("self");
+	var tensor = __getParam161("tensor");
+	var weight = __getParam161("weight");
 	/*
         Performs 'lerp' operation inline, returning the calling tensor modified by interpolation
         of two tensors using a weight.
@@ -1475,27 +1541,27 @@ function lerp_() {
 	return self;
 }
 function renorm() {
-	var __params161 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex161 = 0;
-	var __args161 = arguments;
-	function __getParam161(v, d) {
+	var __params162 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex162 = 0;
+	var __args162 = arguments;
+	function __getParam162(v, d) {
 		var r = d;
-		if (__params161) {
-			if (__formalsIndex161 < __params161.formals.length) {
-				r = __params161.formals[__formalsIndex161++];
-			} else if ((v in __params161.keywords)) {
-				r = __params161.keywords[v];
-				delete __params161.keywords[v];
+		if (__params162) {
+			if (__formalsIndex162 < __params162.formals.length) {
+				r = __params162.formals[__formalsIndex162++];
+			} else if ((v in __params162.keywords)) {
+				r = __params162.keywords[v];
+				delete __params162.keywords[v];
 			}
-		} else if (__formalsIndex161 < __args161.length) {
-			r = __args161[__formalsIndex161++];
+		} else if (__formalsIndex162 < __args162.length) {
+			r = __args162[__formalsIndex162++];
 		}
 		return r;
 	}
-	var self = __getParam161("self");
-	var p = __getParam161("p");
-	var dim = __getParam161("dim");
-	var maxnorm = __getParam161("maxnorm");
+	var self = __getParam162("self");
+	var p = __getParam162("p");
+	var dim = __getParam162("dim");
+	var maxnorm = __getParam162("maxnorm");
 	/*
         Performs the scaling of elements along the dimension dim of a tensor such that
         the p-norm of the sub-tensors along dim are less than or equal to maxnorm.
@@ -1525,27 +1591,27 @@ function renorm() {
 	}
 }
 function renorm_() {
-	var __params162 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex162 = 0;
-	var __args162 = arguments;
-	function __getParam162(v, d) {
+	var __params163 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex163 = 0;
+	var __args163 = arguments;
+	function __getParam163(v, d) {
 		var r = d;
-		if (__params162) {
-			if (__formalsIndex162 < __params162.formals.length) {
-				r = __params162.formals[__formalsIndex162++];
-			} else if ((v in __params162.keywords)) {
-				r = __params162.keywords[v];
-				delete __params162.keywords[v];
+		if (__params163) {
+			if (__formalsIndex163 < __params163.formals.length) {
+				r = __params163.formals[__formalsIndex163++];
+			} else if ((v in __params163.keywords)) {
+				r = __params163.keywords[v];
+				delete __params163.keywords[v];
 			}
-		} else if (__formalsIndex162 < __args162.length) {
-			r = __args162[__formalsIndex162++];
+		} else if (__formalsIndex163 < __args163.length) {
+			r = __args163[__formalsIndex163++];
 		}
 		return r;
 	}
-	var self = __getParam162("self");
-	var p = __getParam162("p");
-	var dim = __getParam162("dim");
-	var maxnorm = __getParam162("maxnorm");
+	var self = __getParam163("self");
+	var p = __getParam163("p");
+	var dim = __getParam163("dim");
+	var maxnorm = __getParam163("maxnorm");
 	/*
         Performs an in-place scaling of elements along the dimension dim of the tensor such that
         the p-norm of the sub-tensors along dim are less than or equal to maxnorm.
@@ -1578,39 +1644,7 @@ function renorm_() {
 		return self;
 	}
 }
-function numel() {
-	var __params163 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex163 = 0;
-	var __args163 = arguments;
-	function __getParam163(v, d) {
-		var r = d;
-		if (__params163) {
-			if (__formalsIndex163 < __params163.formals.length) {
-				r = __params163.formals[__formalsIndex163++];
-			} else if ((v in __params163.keywords)) {
-				r = __params163.keywords[v];
-				delete __params163.keywords[v];
-			}
-		} else if (__formalsIndex163 < __args163.length) {
-			r = __args163[__formalsIndex163++];
-		}
-		return r;
-	}
-	var self = __getParam163("self");
-	/*
-    Returns the total number of elements in the input Tensor.
-
-    Parameters
-    ----------
-
-    Returns
-    -------
-    int:
-        total number of elements in the input Tensor
-    */;
-	return syft.math.numel(self);
-}
-function mv() {
+function unfold() {
 	var __params164 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 	var __formalsIndex164 = 0;
 	var __args164 = arguments;
@@ -1628,8 +1662,123 @@ function mv() {
 		}
 		return r;
 	}
-	var tensormat = __getParam164("tensormat");
-	var tensorvector = __getParam164("tensorvector");
+	var self = __getParam164("self");
+	var dim = __getParam164("dim");
+	var size = __getParam164("size");
+	var step = __getParam164("step");
+	/*
+        Returns a tensor which contains all slices of size `size` along the dimension `dim`.
+
+        Parameters
+        ----------
+        dim: The axis/dimension along which unfolding has to happen
+        size: The number of elements to unfold along the axis 'dim'
+        step: The stride/steps to move along axis while unfolding
+
+        Returns
+        -------
+        TensorBase:
+            Output Tensor
+        */;
+	if (self.encrypted) {
+		return NotImplemented;
+	}
+	var input_array = np.copy(self.data);
+	var input_shape = np.shape(input_array);
+	var num_axes = __pythonRuntime.functions.len(input_shape);
+	if (dim < -num_axes || __pythonRuntime.ops.add(dim, 1) > num_axes) {
+		Exception(("\'dim\' should be between {} and {} inclusive").format(-num_axes, num_axes - 1));
+	}
+	if (!size) {
+		Exception("\'size\'' can\'t be 0 or less");
+	}
+	if (size > input_shape[__pythonRuntime.ops.subscriptIndex(input_shape, dim)]) {
+		Exception("\'size\'' is greater than \'dim\'");
+	}
+	if (step <= 0) {
+		Exception("\'steps\' will have to be greater than 0");
+	}
+	if (dim < 0) {
+		var dim = __pythonRuntime.ops.add(dim, num_axes);
+	}
+	var indices = (function () {
+		var __tmpList165 = new __pythonRuntime.objects.list();
+		{
+			var __filbertRight6 = input_shape;
+			if (__filbertRight6 instanceof Array) {
+				for (var __filbertIndex6 = 0; __filbertIndex6 < __filbertRight6.length; ++__filbertIndex6) {
+					var s = __filbertRight6[__filbertIndex6];
+					__tmpList165.push(slice(s));
+				}
+			} else {
+				for (s in __filbertRight6) {
+					__tmpList165.push(slice(s));
+				}
+			}
+		}
+		return __tmpList165;
+	})();
+	var i = 0;
+	var sub_arrays = new __pythonRuntime.objects.list();
+	while (__pythonRuntime.ops.add(i, size) <= input_shape[__pythonRuntime.ops.subscriptIndex(input_shape, dim)]) {
+		indices[__pythonRuntime.ops.subscriptIndex(indices, dim)] = slice(i, __pythonRuntime.ops.add(i, size));
+		sub_arrays.append(np.expand_dims(input_array[__pythonRuntime.ops.subscriptIndex(input_array, indices)], axis, num_axes).swapaxes(dim, num_axes));
+		i = __pythonRuntime.ops.add(i, step);
+	}
+	return new TensorBase(np.concatenate(sub_arrays, axis, dim));
+}
+function numel() {
+	var __params166 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex166 = 0;
+	var __args166 = arguments;
+	function __getParam166(v, d) {
+		var r = d;
+		if (__params166) {
+			if (__formalsIndex166 < __params166.formals.length) {
+				r = __params166.formals[__formalsIndex166++];
+			} else if ((v in __params166.keywords)) {
+				r = __params166.keywords[v];
+				delete __params166.keywords[v];
+			}
+		} else if (__formalsIndex166 < __args166.length) {
+			r = __args166[__formalsIndex166++];
+		}
+		return r;
+	}
+	var self = __getParam166("self");
+	/*
+    Returns the total number of elements in the input Tensor.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    int:
+        total number of elements in the input Tensor
+    */;
+	return syft.math.numel(self);
+}
+function mv() {
+	var __params167 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex167 = 0;
+	var __args167 = arguments;
+	function __getParam167(v, d) {
+		var r = d;
+		if (__params167) {
+			if (__formalsIndex167 < __params167.formals.length) {
+				r = __params167.formals[__formalsIndex167++];
+			} else if ((v in __params167.keywords)) {
+				r = __params167.keywords[v];
+				delete __params167.keywords[v];
+			}
+		} else if (__formalsIndex167 < __args167.length) {
+			r = __args167[__formalsIndex167++];
+		}
+		return r;
+	}
+	var tensormat = __getParam167("tensormat");
+	var tensorvector = __getParam167("tensorvector");
 	/*
     Matrix and Vector multiplication is performed.
 
@@ -1657,25 +1806,25 @@ if (tensorvector.data.shape[__pythonRuntime.ops.subscriptIndex(tensorvector.data
 	return new TensorBase(np.matmul(tensormat.data, tensorvector.data));
 }
 function masked_select() {
-	var __params165 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex165 = 0;
-	var __args165 = arguments;
-	function __getParam165(v, d) {
+	var __params168 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
+	var __formalsIndex168 = 0;
+	var __args168 = arguments;
+	function __getParam168(v, d) {
 		var r = d;
-		if (__params165) {
-			if (__formalsIndex165 < __params165.formals.length) {
-				r = __params165.formals[__formalsIndex165++];
-			} else if ((v in __params165.keywords)) {
-				r = __params165.keywords[v];
-				delete __params165.keywords[v];
+		if (__params168) {
+			if (__formalsIndex168 < __params168.formals.length) {
+				r = __params168.formals[__formalsIndex168++];
+			} else if ((v in __params168.keywords)) {
+				r = __params168.keywords[v];
+				delete __params168.keywords[v];
 			}
-		} else if (__formalsIndex165 < __args165.length) {
-			r = __args165[__formalsIndex165++];
+		} else if (__formalsIndex168 < __args168.length) {
+			r = __args168[__formalsIndex168++];
 		}
 		return r;
 	}
-	var tensor = __getParam165("tensor");
-	var mask = __getParam165("mask");
+	var tensor = __getParam168("tensor");
+	var mask = __getParam168("mask");
 	/*
     Returns a new 1D Tensor which indexes the ``input`` Tensor according to
     the binary mask ``mask``.
@@ -1699,9 +1848,9 @@ function masked_select() {
 		NotImplemented;
 	}
 	{
-		var __filbertTmp166 = np.broadcast_arrays();
-		var mask_broadcasted = __filbertTmp166[0];
-		var data_broadcasted = __filbertTmp166[1];
+		var __filbertTmp169 = np.broadcast_arrays();
+		var mask_broadcasted = __filbertTmp169[0];
+		var data_broadcasted = __filbertTmp169[1];
 	}
 	new __pythonRuntime.objects.tuple(mask.data, tensor.data);
 	var indices = np.where(mask_broadcasted);

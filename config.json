@@ -13,23 +13,5 @@
       "match": "False",
       "operations": [{ "name": "replace", "arguments": ["false"] }]
     }
-  ],
-  "syft/he/paillier/basic.py": [
-    {
-      "type": "Program",
-      "operations": [{ "name": "unNestBody" }]
-    }
-  ],
-  "syft/he/paillier/keys.py": [
-    {
-      "type": "Program",
-      "operations": [{ "name": "unNestBody" }]
-    }
-  ],
-  "syft/he/abstract/keys.py": [
-    {
-      "type": "Program",
-      "operations": [{ "name": "unNestBody" }]
-    }
   ]
 }

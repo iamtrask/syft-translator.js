@@ -229,7 +229,7 @@ class SerializeTest {
 			var seckey2 = __filbertTmp40[1];
 		}
 		sk_serialized;
-		this.assertTrue(pubkey.pk == pubkey2.pk && dummy309);
+		this.assertTrue(pubkey.pk == pubkey2.pk && dummy327);
 		seckey.sk == seckey2.sk;
 	}
 }

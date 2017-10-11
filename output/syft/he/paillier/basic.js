@@ -1,5 +1,5 @@
-{}
-{
+class PaillierTensor {}
+class Float {
 	__init__() {
 		var __params12 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
 		var __formalsIndex12 = 0;
