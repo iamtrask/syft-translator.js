@@ -4,25 +4,7 @@ class Benchmark {
     Input of the Benchmark class should be the function to test
     and the params (optional)
     */;
-	__init__() {
-		var __params0 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-		var __formalsIndex0 = 0;
-		var __args0 = arguments;
-		function __getParam0(v, d) {
-			var r = d;
-			if (__params0) {
-				if (__formalsIndex0 < __params0.formals.length) {
-					r = __params0.formals[__formalsIndex0++];
-				} else if ((v in __params0.keywords)) {
-					r = __params0.keywords[v];
-					delete __params0.keywords[v];
-				}
-			} else if (__formalsIndex0 < __args0.length) {
-				r = __args0[__formalsIndex0++];
-			}
-			return r;
-		}
-		var function = __getParam0("function");
+	constructor(function) {
 		var params = {};
 		if (__params0) {
 			params = __params0.keywords;
@@ -30,25 +12,7 @@ class Benchmark {
 		this.function = function;
 		this.params = params;
 	}
-	exec_time() {
-		var __params1 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-		var __formalsIndex1 = 0;
-		var __args1 = arguments;
-		function __getParam1(v, d) {
-			var r = d;
-			if (__params1) {
-				if (__formalsIndex1 < __params1.formals.length) {
-					r = __params1.formals[__formalsIndex1++];
-				} else if ((v in __params1.keywords)) {
-					r = __params1.keywords[v];
-					delete __params1.keywords[v];
-				}
-			} else if (__formalsIndex1 < __args1.length) {
-				r = __args1[__formalsIndex1++];
-			}
-			return r;
-		}
-		var reps = __getParam1("reps", 1);
+	exec_time(reps) {
 		"""
         Calls function x-times and returns an array of computed execution times
         """;

@@ -14,25 +14,7 @@ var __all__ = new __pythonRuntime.objects.list(dummy17);
 new __pythonRuntime.objects.tuple('cumprod', 'cumsum', 'ceil', 'dot', 'floor', 'matmul', 'addmm', 'addcmul', dummy18);
 new __pythonRuntime.objects.tuple('addcdiv', 'addmv', 'bmm', 'addbmm', 'baddbmm', 'sigmoid', 'unsqueeze', dummy19);
 new __pythonRuntime.objects.tuple('tanh', 'relu', 'zeros', 'ones', 'rand', 'randn', 'mm', 'fmod', 'diag', 'lerp', 'renorm', 'numel');
-function zeros() {
-	var __params0 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex0 = 0;
-	var __args0 = arguments;
-	function __getParam0(v, d) {
-		var r = d;
-		if (__params0) {
-			if (__formalsIndex0 < __params0.formals.length) {
-				r = __params0.formals[__formalsIndex0++];
-			} else if ((v in __params0.keywords)) {
-				r = __params0.keywords[v];
-				delete __params0.keywords[v];
-			}
-		} else if (__formalsIndex0 < __args0.length) {
-			r = __args0[__formalsIndex0++];
-		}
-		return r;
-	}
-	var dim = __getParam0("dim");
+function zeros(dim) {
 	/*
     Returns a tensor of zeros
 
@@ -47,25 +29,7 @@ function zeros() {
     */;
 	return TensorBase(np.zeros(dim));
 }
-function ones() {
-	var __params1 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex1 = 0;
-	var __args1 = arguments;
-	function __getParam1(v, d) {
-		var r = d;
-		if (__params1) {
-			if (__formalsIndex1 < __params1.formals.length) {
-				r = __params1.formals[__formalsIndex1++];
-			} else if ((v in __params1.keywords)) {
-				r = __params1.keywords[v];
-				delete __params1.keywords[v];
-			}
-		} else if (__formalsIndex1 < __args1.length) {
-			r = __args1[__formalsIndex1++];
-		}
-		return r;
-	}
-	var dim = __getParam1("dim");
+function ones(dim) {
 	/*
     Returns a tensor of ones
 
@@ -80,25 +44,7 @@ function ones() {
     */;
 	return TensorBase(np.ones(dim));
 }
-function rand() {
-	var __params2 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex2 = 0;
-	var __args2 = arguments;
-	function __getParam2(v, d) {
-		var r = d;
-		if (__params2) {
-			if (__formalsIndex2 < __params2.formals.length) {
-				r = __params2.formals[__formalsIndex2++];
-			} else if ((v in __params2.keywords)) {
-				r = __params2.keywords[v];
-				delete __params2.keywords[v];
-			}
-		} else if (__formalsIndex2 < __args2.length) {
-			r = __args2[__formalsIndex2++];
-		}
-		return r;
-	}
-	var dim = __getParam2("dim");
+function rand(dim) {
 	/*
     Returns a tensor with numbers initialized according to a uniform
     distribution from 0 to 1
@@ -114,25 +60,7 @@ function rand() {
     */;
 	return TensorBase(np.random.rand(dim));
 }
-function randn() {
-	var __params3 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex3 = 0;
-	var __args3 = arguments;
-	function __getParam3(v, d) {
-		var r = d;
-		if (__params3) {
-			if (__formalsIndex3 < __params3.formals.length) {
-				r = __params3.formals[__formalsIndex3++];
-			} else if ((v in __params3.keywords)) {
-				r = __params3.keywords[v];
-				delete __params3.keywords[v];
-			}
-		} else if (__formalsIndex3 < __args3.length) {
-			r = __args3[__formalsIndex3++];
-		}
-		return r;
-	}
-	var dim = __getParam3("dim");
+function randn(dim) {
 	/*
     Returns a tensor with initial numbers sampled from a standard normal
     distribution
@@ -148,26 +76,7 @@ function randn() {
     */;
 	return TensorBase(np.random.randn(dim));
 }
-function dot() {
-	var __params4 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex4 = 0;
-	var __args4 = arguments;
-	function __getParam4(v, d) {
-		var r = d;
-		if (__params4) {
-			if (__formalsIndex4 < __params4.formals.length) {
-				r = __params4.formals[__formalsIndex4++];
-			} else if ((v in __params4.keywords)) {
-				r = __params4.keywords[v];
-				delete __params4.keywords[v];
-			}
-		} else if (__formalsIndex4 < __args4.length) {
-			r = __args4[__formalsIndex4++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam4("tensor1");
-	var tensor2 = __getParam4("tensor2");
+function dot(tensor1, tensor2) {
 	/*
     Returns inner product of two tensors.
 
@@ -194,26 +103,7 @@ function dot() {
 	}
 	return np.vdot(tensor1.data, tensor2.data);
 }
-function diag() {
-	var __params5 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex5 = 0;
-	var __args5 = arguments;
-	function __getParam5(v, d) {
-		var r = d;
-		if (__params5) {
-			if (__formalsIndex5 < __params5.formals.length) {
-				r = __params5.formals[__formalsIndex5++];
-			} else if ((v in __params5.keywords)) {
-				r = __params5.keywords[v];
-				delete __params5.keywords[v];
-			}
-		} else if (__formalsIndex5 < __args5.length) {
-			r = __args5[__formalsIndex5++];
-		}
-		return r;
-	}
-	var tensor = __getParam5("tensor");
-	var diagonal = __getParam5("diagonal", 0);
+function diag(tensor, diagonal) {
 	/*
     * Returns a new 2D square tensor with the elements of 1D input tensor as the diagonal.
     * Returns a new 1D tensor with diagonal elements of 2D input tensor.
@@ -246,26 +136,7 @@ function diag() {
 		ValueError("Input must be 1- or 2-d tensor.");
 	}
 }
-function matmul() {
-	var __params6 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex6 = 0;
-	var __args6 = arguments;
-	function __getParam6(v, d) {
-		var r = d;
-		if (__params6) {
-			if (__formalsIndex6 < __params6.formals.length) {
-				r = __params6.formals[__formalsIndex6++];
-			} else if ((v in __params6.keywords)) {
-				r = __params6.keywords[v];
-				delete __params6.keywords[v];
-			}
-		} else if (__formalsIndex6 < __args6.length) {
-			r = __args6[__formalsIndex6++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam6("tensor1");
-	var tensor2 = __getParam6("tensor2");
+function matmul(tensor1, tensor2) {
 	/*
     Performs matrix multiplication between two tensors.
 
@@ -309,25 +180,7 @@ function matmul() {
 		return TensorBase(np.matmul(tensor1.data, tensor2.data));
 	}
 }
-function ceil() {
-	var __params7 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex7 = 0;
-	var __args7 = arguments;
-	function __getParam7(v, d) {
-		var r = d;
-		if (__params7) {
-			if (__formalsIndex7 < __params7.formals.length) {
-				r = __params7.formals[__formalsIndex7++];
-			} else if ((v in __params7.keywords)) {
-				r = __params7.keywords[v];
-				delete __params7.keywords[v];
-			}
-		} else if (__formalsIndex7 < __args7.length) {
-			r = __args7[__formalsIndex7++];
-		}
-		return r;
-	}
-	var tensor = __getParam7("tensor");
+function ceil(tensor) {
 	/*
     Returns the ceilling input tensor,element wise .
 
@@ -352,25 +205,7 @@ function ceil() {
 	}
 	return TensorBase(np.ceil(tensor.data));
 }
-function floor() {
-	var __params8 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex8 = 0;
-	var __args8 = arguments;
-	function __getParam8(v, d) {
-		var r = d;
-		if (__params8) {
-			if (__formalsIndex8 < __params8.formals.length) {
-				r = __params8.formals[__formalsIndex8++];
-			} else if ((v in __params8.keywords)) {
-				r = __params8.keywords[v];
-				delete __params8.keywords[v];
-			}
-		} else if (__formalsIndex8 < __args8.length) {
-			r = __args8[__formalsIndex8++];
-		}
-		return r;
-	}
-	var tensor = __getParam8("tensor");
+function floor(tensor) {
 	/*
     Returns the floored input tensor,element wise.
     Floor of an input scalar is the largest integer such as:
@@ -394,26 +229,7 @@ function floor() {
 	}
 	return TensorBase(np.floor(tensor.data));
 }
-function cumsum() {
-	var __params9 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex9 = 0;
-	var __args9 = arguments;
-	function __getParam9(v, d) {
-		var r = d;
-		if (__params9) {
-			if (__formalsIndex9 < __params9.formals.length) {
-				r = __params9.formals[__formalsIndex9++];
-			} else if ((v in __params9.keywords)) {
-				r = __params9.keywords[v];
-				delete __params9.keywords[v];
-			}
-		} else if (__formalsIndex9 < __args9.length) {
-			r = __args9[__formalsIndex9++];
-		}
-		return r;
-	}
-	var tensor = __getParam9("tensor");
-	var dim = __getParam9("dim", 0);
+function cumsum(tensor, dim) {
 	/*
     Returns the cumulative sum of the elements along a given dimension
 
@@ -436,26 +252,7 @@ function cumsum() {
 	}
 	return TensorBase(np.cumsum(tensor.data, dim));
 }
-function cumprod() {
-	var __params10 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex10 = 0;
-	var __args10 = arguments;
-	function __getParam10(v, d) {
-		var r = d;
-		if (__params10) {
-			if (__formalsIndex10 < __params10.formals.length) {
-				r = __params10.formals[__formalsIndex10++];
-			} else if ((v in __params10.keywords)) {
-				r = __params10.keywords[v];
-				delete __params10.keywords[v];
-			}
-		} else if (__formalsIndex10 < __args10.length) {
-			r = __args10[__formalsIndex10++];
-		}
-		return r;
-	}
-	var tensor = __getParam10("tensor");
-	var dim = __getParam10("dim", 0);
+function cumprod(tensor, dim) {
 	/*
     Returns the cumulative product of the elements along a given axis
 
@@ -478,25 +275,7 @@ function cumprod() {
 	}
 	return TensorBase(np.cumprod(tensor.data, dim));
 }
-function sigmoid() {
-	var __params11 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex11 = 0;
-	var __args11 = arguments;
-	function __getParam11(v, d) {
-		var r = d;
-		if (__params11) {
-			if (__formalsIndex11 < __params11.formals.length) {
-				r = __params11.formals[__formalsIndex11++];
-			} else if ((v in __params11.keywords)) {
-				r = __params11.keywords[v];
-				delete __params11.keywords[v];
-			}
-		} else if (__formalsIndex11 < __args11.length) {
-			r = __args11[__formalsIndex11++];
-		}
-		return r;
-	}
-	var tensor = __getParam11("tensor");
+function sigmoid(tensor) {
 	/*
     Returns a new tensor holding element wise values of Sigmoid function
     Sigmoid(x) = 1 / 1+exp(-x)
@@ -517,25 +296,7 @@ function sigmoid() {
 	}
 	return TensorBase(1 / __pythonRuntime.ops.add(1, np.exp(np.array(-tensor.data))));
 }
-function tanh() {
-	var __params12 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex12 = 0;
-	var __args12 = arguments;
-	function __getParam12(v, d) {
-		var r = d;
-		if (__params12) {
-			if (__formalsIndex12 < __params12.formals.length) {
-				r = __params12.formals[__formalsIndex12++];
-			} else if ((v in __params12.keywords)) {
-				r = __params12.keywords[v];
-				delete __params12.keywords[v];
-			}
-		} else if (__formalsIndex12 < __args12.length) {
-			r = __args12[__formalsIndex12++];
-		}
-		return r;
-	}
-	var tensor = __getParam12("tensor");
+function tanh(tensor) {
 	/*
     Returns a new tensor holding element wise values of tanh function
     tanh(x) = (e^(x) - e^(-x))/(e^(x) + e^(-x))
@@ -556,25 +317,7 @@ function tanh() {
 	}
 	return TensorBase(np.tanh(np.array(tensor.data)));
 }
-function relu() {
-	var __params13 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex13 = 0;
-	var __args13 = arguments;
-	function __getParam13(v, d) {
-		var r = d;
-		if (__params13) {
-			if (__formalsIndex13 < __params13.formals.length) {
-				r = __params13.formals[__formalsIndex13++];
-			} else if ((v in __params13.keywords)) {
-				r = __params13.keywords[v];
-				delete __params13.keywords[v];
-			}
-		} else if (__formalsIndex13 < __args13.length) {
-			r = __args13[__formalsIndex13++];
-		}
-		return r;
-	}
-	var tensor = __getParam13("tensor");
+function relu(tensor) {
 	/*
     Return relu function
 
@@ -594,29 +337,7 @@ function relu() {
 	}
 	return TensorBase(np.maximum(0, tensor.data));
 }
-function addmm() {
-	var __params14 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex14 = 0;
-	var __args14 = arguments;
-	function __getParam14(v, d) {
-		var r = d;
-		if (__params14) {
-			if (__formalsIndex14 < __params14.formals.length) {
-				r = __params14.formals[__formalsIndex14++];
-			} else if ((v in __params14.keywords)) {
-				r = __params14.keywords[v];
-				delete __params14.keywords[v];
-			}
-		} else if (__formalsIndex14 < __args14.length) {
-			r = __args14[__formalsIndex14++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam14("tensor1");
-	var tensor2 = __getParam14("tensor2");
-	var mat = __getParam14("mat");
-	var beta = __getParam14("beta", 1);
-	var alpha = __getParam14("alpha", 1);
+function addmm(tensor1, tensor2, mat, beta, alpha) {
 	/*
     Performs ((Mat*Beta)+((Tensor1.Tensor2)*Alpha)) and  returns the
     result as a Tensor
@@ -667,28 +388,7 @@ function addmm() {
 		return TensorBase(np.array(__pythonRuntime.ops.add(__pythonRuntime.ops.multiply(mat.data, beta), __pythonRuntime.ops.multiply(delta, alpha))));
 	}
 }
-function addcmul() {
-	var __params15 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex15 = 0;
-	var __args15 = arguments;
-	function __getParam15(v, d) {
-		var r = d;
-		if (__params15) {
-			if (__formalsIndex15 < __params15.formals.length) {
-				r = __params15.formals[__formalsIndex15++];
-			} else if ((v in __params15.keywords)) {
-				r = __params15.keywords[v];
-				delete __params15.keywords[v];
-			}
-		} else if (__formalsIndex15 < __args15.length) {
-			r = __args15[__formalsIndex15++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam15("tensor1");
-	var tensor2 = __getParam15("tensor2");
-	var mat = __getParam15("mat");
-	var value = __getParam15("value", 1);
+function addcmul(tensor1, tensor2, mat, value) {
 	/*
     Performs the element-wise multiplication of tensor1 by tensor2,
     multiply the result by the scalar value and add it to mat.
@@ -719,28 +419,7 @@ function addcmul() {
 		return TensorBase(out);
 	}
 }
-function addcdiv() {
-	var __params16 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex16 = 0;
-	var __args16 = arguments;
-	function __getParam16(v, d) {
-		var r = d;
-		if (__params16) {
-			if (__formalsIndex16 < __params16.formals.length) {
-				r = __params16.formals[__formalsIndex16++];
-			} else if ((v in __params16.keywords)) {
-				r = __params16.keywords[v];
-				delete __params16.keywords[v];
-			}
-		} else if (__formalsIndex16 < __args16.length) {
-			r = __args16[__formalsIndex16++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam16("tensor1");
-	var tensor2 = __getParam16("tensor2");
-	var mat = __getParam16("mat");
-	var value = __getParam16("value", 1);
+function addcdiv(tensor1, tensor2, mat, value) {
 	/*
     Performs the element-wise division of tensor1 by tensor2, multiply
     the result by the scalar value and add it to mat.
@@ -771,29 +450,7 @@ function addcdiv() {
 		return TensorBase(out);
 	}
 }
-function addmv() {
-	var __params17 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex17 = 0;
-	var __args17 = arguments;
-	function __getParam17(v, d) {
-		var r = d;
-		if (__params17) {
-			if (__formalsIndex17 < __params17.formals.length) {
-				r = __params17.formals[__formalsIndex17++];
-			} else if ((v in __params17.keywords)) {
-				r = __params17.keywords[v];
-				delete __params17.keywords[v];
-			}
-		} else if (__formalsIndex17 < __args17.length) {
-			r = __args17[__formalsIndex17++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam17("tensor1");
-	var mat = __getParam17("mat");
-	var vec = __getParam17("vec");
-	var beta = __getParam17("beta", 1);
-	var alpha = __getParam17("alpha", 1);
+function addmv(tensor1, mat, vec, beta, alpha) {
 	/*
     Performs a matrix-vector product of the matrix mat and the vector vec.
 
@@ -834,26 +491,7 @@ function addmv() {
 		return TensorBase(out);
 	}
 }
-function bmm() {
-	var __params18 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex18 = 0;
-	var __args18 = arguments;
-	function __getParam18(v, d) {
-		var r = d;
-		if (__params18) {
-			if (__formalsIndex18 < __params18.formals.length) {
-				r = __params18.formals[__formalsIndex18++];
-			} else if ((v in __params18.keywords)) {
-				r = __params18.keywords[v];
-				delete __params18.keywords[v];
-			}
-		} else if (__formalsIndex18 < __args18.length) {
-			r = __args18[__formalsIndex18++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam18("tensor1");
-	var tensor2 = __getParam18("tensor2");
+function bmm(tensor1, tensor2) {
 	/*
     Performs a batch matrix-matrix product of this tensor
     and tensor2. Both tensors must be 3D containing equal number
@@ -888,29 +526,7 @@ function bmm() {
 		return TensorBase(out);
 	}
 }
-function addbmm() {
-	var __params19 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex19 = 0;
-	var __args19 = arguments;
-	function __getParam19(v, d) {
-		var r = d;
-		if (__params19) {
-			if (__formalsIndex19 < __params19.formals.length) {
-				r = __params19.formals[__formalsIndex19++];
-			} else if ((v in __params19.keywords)) {
-				r = __params19.keywords[v];
-				delete __params19.keywords[v];
-			}
-		} else if (__formalsIndex19 < __args19.length) {
-			r = __args19[__formalsIndex19++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam19("tensor1");
-	var tensor2 = __getParam19("tensor2");
-	var mat = __getParam19("mat");
-	var beta = __getParam19("beta", 1);
-	var alpha = __getParam19("alpha", 1);
+function addbmm(tensor1, tensor2, mat, beta, alpha) {
 	/*
     Performs a batch matrix-matrix product of matrices stored in
     batch1(tensor1) and batch2(tensor2),
@@ -974,29 +590,7 @@ function addbmm() {
 		return TensorBase(out);
 	}
 }
-function baddbmm() {
-	var __params22 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex22 = 0;
-	var __args22 = arguments;
-	function __getParam22(v, d) {
-		var r = d;
-		if (__params22) {
-			if (__formalsIndex22 < __params22.formals.length) {
-				r = __params22.formals[__formalsIndex22++];
-			} else if ((v in __params22.keywords)) {
-				r = __params22.keywords[v];
-				delete __params22.keywords[v];
-			}
-		} else if (__formalsIndex22 < __args22.length) {
-			r = __args22[__formalsIndex22++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam22("tensor1");
-	var tensor2 = __getParam22("tensor2");
-	var mat = __getParam22("mat");
-	var beta = __getParam22("beta", 1);
-	var alpha = __getParam22("alpha", 1);
+function baddbmm(tensor1, tensor2, mat, beta, alpha) {
 	/*
     Performs a batch matrix-matrix product of matrices in batch1(tensor1)
     and batch2(tensor2). mat is added to the final result.
@@ -1041,27 +635,7 @@ function baddbmm() {
 		return TensorBase(out);
 	}
 }
-function transpose() {
-	var __params23 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex23 = 0;
-	var __args23 = arguments;
-	function __getParam23(v, d) {
-		var r = d;
-		if (__params23) {
-			if (__formalsIndex23 < __params23.formals.length) {
-				r = __params23.formals[__formalsIndex23++];
-			} else if ((v in __params23.keywords)) {
-				r = __params23.keywords[v];
-				delete __params23.keywords[v];
-			}
-		} else if (__formalsIndex23 < __args23.length) {
-			r = __args23[__formalsIndex23++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam23("tensor1");
-	var dim0 = __getParam23("dim0");
-	var dim1 = __getParam23("dim1");
+function transpose(tensor1, dim0, dim1) {
 	/*
     Performs tensor transpose operation, tranposing dim0 and dim1.
 
@@ -1097,26 +671,7 @@ function transpose() {
 		return TensorBase(np.transpose(tensor1.data, axes, axes));
 	}
 }
-function unsqueeze() {
-	var __params24 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex24 = 0;
-	var __args24 = arguments;
-	function __getParam24(v, d) {
-		var r = d;
-		if (__params24) {
-			if (__formalsIndex24 < __params24.formals.length) {
-				r = __params24.formals[__formalsIndex24++];
-			} else if ((v in __params24.keywords)) {
-				r = __params24.keywords[v];
-				delete __params24.keywords[v];
-			}
-		} else if (__formalsIndex24 < __args24.length) {
-			r = __args24[__formalsIndex24++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam24("tensor1");
-	var dim = __getParam24("dim");
+function unsqueeze(tensor1, dim) {
 	/*
     Performs 'unsqueeze' operation, returning a new tensor with a dimension
     of size one inserted at the specified position.
@@ -1143,26 +698,7 @@ function unsqueeze() {
 		return TensorBase(np.expand_dims(tensor1.data, dim));
 	}
 }
-function mm() {
-	var __params25 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex25 = 0;
-	var __args25 = arguments;
-	function __getParam25(v, d) {
-		var r = d;
-		if (__params25) {
-			if (__formalsIndex25 < __params25.formals.length) {
-				r = __params25.formals[__formalsIndex25++];
-			} else if ((v in __params25.keywords)) {
-				r = __params25.keywords[v];
-				delete __params25.keywords[v];
-			}
-		} else if (__formalsIndex25 < __args25.length) {
-			r = __args25[__formalsIndex25++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam25("tensor1");
-	var tensor2 = __getParam25("tensor2");
+function mm(tensor1, tensor2) {
 	/*
     Performs a matrix multiplication of :attr:`tensor1` and :attr:`tensor2`.
 
@@ -1188,26 +724,7 @@ function mm() {
 		return TensorBase(np.array(np.matmul(tensor1.data, tensor2.data)));
 	}
 }
-function fmod() {
-	var __params26 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex26 = 0;
-	var __args26 = arguments;
-	function __getParam26(v, d) {
-		var r = d;
-		if (__params26) {
-			if (__formalsIndex26 < __params26.formals.length) {
-				r = __params26.formals[__formalsIndex26++];
-			} else if ((v in __params26.keywords)) {
-				r = __params26.keywords[v];
-				delete __params26.keywords[v];
-			}
-		} else if (__formalsIndex26 < __args26.length) {
-			r = __args26[__formalsIndex26++];
-		}
-		return r;
-	}
-	var tensor = __getParam26("tensor");
-	var divisor = __getParam26("divisor");
+function fmod(tensor, divisor) {
 	/*
     Performs the element-wise division of tensor by divisor.
 
@@ -1233,25 +750,7 @@ function fmod() {
 	}
 	return TensorBase(np.fmod(tensor.data, divisor));
 }
-function numel() {
-	var __params27 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex27 = 0;
-	var __args27 = arguments;
-	function __getParam27(v, d) {
-		var r = d;
-		if (__params27) {
-			if (__formalsIndex27 < __params27.formals.length) {
-				r = __params27.formals[__formalsIndex27++];
-			} else if ((v in __params27.keywords)) {
-				r = __params27.keywords[v];
-				delete __params27.keywords[v];
-			}
-		} else if (__formalsIndex27 < __args27.length) {
-			r = __args27[__formalsIndex27++];
-		}
-		return r;
-	}
-	var tensor = __getParam27("tensor");
+function numel(tensor) {
 	/*
     Returns the total number of elements in the input Tensor.
 
@@ -1269,27 +768,7 @@ function numel() {
 		return tensor.data.size;
 	}
 }
-function lerp() {
-	var __params28 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex28 = 0;
-	var __args28 = arguments;
-	function __getParam28(v, d) {
-		var r = d;
-		if (__params28) {
-			if (__formalsIndex28 < __params28.formals.length) {
-				r = __params28.formals[__formalsIndex28++];
-			} else if ((v in __params28.keywords)) {
-				r = __params28.keywords[v];
-				delete __params28.keywords[v];
-			}
-		} else if (__formalsIndex28 < __args28.length) {
-			r = __args28[__formalsIndex28++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam28("tensor1");
-	var tensor2 = __getParam28("tensor2");
-	var weight = __getParam28("weight");
+function lerp(tensor1, tensor2, weight) {
 	/*
     Performs 'lerp' operation, returning a new tensor calculated by interpolation
     of two tensors using a weight.
@@ -1317,28 +796,7 @@ function lerp() {
 	var out = __pythonRuntime.ops.add(t1, __pythonRuntime.ops.multiply(weight, t2 - t1));
 	return TensorBase(out);
 }
-function renorm() {
-	var __params29 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex29 = 0;
-	var __args29 = arguments;
-	function __getParam29(v, d) {
-		var r = d;
-		if (__params29) {
-			if (__formalsIndex29 < __params29.formals.length) {
-				r = __params29.formals[__formalsIndex29++];
-			} else if ((v in __params29.keywords)) {
-				r = __params29.keywords[v];
-				delete __params29.keywords[v];
-			}
-		} else if (__formalsIndex29 < __args29.length) {
-			r = __args29[__formalsIndex29++];
-		}
-		return r;
-	}
-	var tensor1 = __getParam29("tensor1");
-	var p = __getParam29("p");
-	var dim = __getParam29("dim");
-	var maxnorm = __getParam29("maxnorm");
+function renorm(tensor1, p, dim, maxnorm) {
 	/*
     Performs the scaling of elements along the dimension dim in tensor1 such that
     the p-norm of the sub-tensors along dim are less than or equal to maxnorm.

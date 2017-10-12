@@ -1,22 +1,4 @@
-function read() {
-	var __params0 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex0 = 0;
-	var __args0 = arguments;
-	function __getParam0(v, d) {
-		var r = d;
-		if (__params0) {
-			if (__formalsIndex0 < __params0.formals.length) {
-				r = __params0.formals[__formalsIndex0++];
-			} else if ((v in __params0.keywords)) {
-				r = __params0.keywords[v];
-				delete __params0.keywords[v];
-			}
-		} else if (__formalsIndex0 < __args0.length) {
-			r = __args0[__formalsIndex0++];
-		}
-		return r;
-	}
-	var fname = __getParam0("fname");
+function read(fname) {
 	return open(os.path.join(os.path.dirname(__file__), fname)).read();
 }
 var requirements = read(__pythonRuntime.utils.createParamsObj('requirements.txt')).split();

@@ -33,116 +33,26 @@ class DiagTests {
 	}
 }
 function test_one_dim_tensor_upper_diag() {
-	var __params6 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex6 = 0;
-	var __args6 = arguments;
-	function __getParam6(v, d) {
-		var r = d;
-		if (__params6) {
-			if (__formalsIndex6 < __params6.formals.length) {
-				r = __params6.formals[__formalsIndex6++];
-			} else if ((v in __params6.keywords)) {
-				r = __params6.keywords[v];
-				delete __params6.keywords[v];
-			}
-		} else if (__formalsIndex6 < __args6.length) {
-			r = __args6[__formalsIndex6++];
-		}
-		return r;
-	}
-	var self = __getParam6("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(1, 2, 3)));
 	var tdiag = t.diag(1);
 	self.assertTrue(syft.equal(tdiag.data, TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0))[__pythonRuntime.ops.subscriptIndex(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0)), new __pythonRuntime.objects.tuple(0, 0, 0, 3))])[__pythonRuntime.ops.subscriptIndex(TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0))[__pythonRuntime.ops.subscriptIndex(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0)), new __pythonRuntime.objects.tuple(0, 0, 0, 3))]), new __pythonRuntime.objects.tuple(0, 0, 0, 0))]));
 }
 function test_one_dim_tensor_below_diag() {
-	var __params7 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex7 = 0;
-	var __args7 = arguments;
-	function __getParam7(v, d) {
-		var r = d;
-		if (__params7) {
-			if (__formalsIndex7 < __params7.formals.length) {
-				r = __params7.formals[__formalsIndex7++];
-			} else if ((v in __params7.keywords)) {
-				r = __params7.keywords[v];
-				delete __params7.keywords[v];
-			}
-		} else if (__formalsIndex7 < __args7.length) {
-			r = __args7[__formalsIndex7++];
-		}
-		return r;
-	}
-	var self = __getParam7("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(1, 2, 3)));
 	var tdiag = t.diag(-1);
 	self.assertTrue(syft.equal(tdiag.data, TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0))[__pythonRuntime.ops.subscriptIndex(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0)), new __pythonRuntime.objects.tuple(0, 2, 0, 0))])[__pythonRuntime.ops.subscriptIndex(TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0))[__pythonRuntime.ops.subscriptIndex(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0)), new __pythonRuntime.objects.tuple(0, 2, 0, 0))]), new __pythonRuntime.objects.tuple(0, 0, 3, 0))]));
 }
 function test_two_dim_tensor_main_diag() {
-	var __params8 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex8 = 0;
-	var __args8 = arguments;
-	function __getParam8(v, d) {
-		var r = d;
-		if (__params8) {
-			if (__formalsIndex8 < __params8.formals.length) {
-				r = __params8.formals[__formalsIndex8++];
-			} else if ((v in __params8.keywords)) {
-				r = __params8.keywords[v];
-				delete __params8.keywords[v];
-			}
-		} else if (__formalsIndex8 < __args8.length) {
-			r = __args8[__formalsIndex8++];
-		}
-		return r;
-	}
-	var self = __getParam8("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1), new __pythonRuntime.objects.list(2, 3))));
 	var tdiag = t.diag();
 	self.assertTrue(syft.equal(tdiag.data, TensorBase(np.array(new __pythonRuntime.objects.list(0, 3)))));
 }
 function test_two_dim_tensor_upper_diag() {
-	var __params9 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex9 = 0;
-	var __args9 = arguments;
-	function __getParam9(v, d) {
-		var r = d;
-		if (__params9) {
-			if (__formalsIndex9 < __params9.formals.length) {
-				r = __params9.formals[__formalsIndex9++];
-			} else if ((v in __params9.keywords)) {
-				r = __params9.keywords[v];
-				delete __params9.keywords[v];
-			}
-		} else if (__formalsIndex9 < __args9.length) {
-			r = __args9[__formalsIndex9++];
-		}
-		return r;
-	}
-	var self = __getParam9("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1), new __pythonRuntime.objects.list(2, 3))));
 	var tdiag = t.diag(1);
 	self.assertTrue(syft.equal(tdiag.data, TensorBase(np.array(new __pythonRuntime.objects.list(1)))));
 }
 function test_two_dim_tensor_below_diag() {
-	var __params10 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex10 = 0;
-	var __args10 = arguments;
-	function __getParam10(v, d) {
-		var r = d;
-		if (__params10) {
-			if (__formalsIndex10 < __params10.formals.length) {
-				r = __params10.formals[__formalsIndex10++];
-			} else if ((v in __params10.keywords)) {
-				r = __params10.keywords[v];
-				delete __params10.keywords[v];
-			}
-		} else if (__formalsIndex10 < __args10.length) {
-			r = __args10[__formalsIndex10++];
-		}
-		return r;
-	}
-	var self = __getParam10("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1), new __pythonRuntime.objects.list(2, 3))));
 	var tdiag = t.diag(-1);
 	self.assertTrue(syft.equal(tdiag.data, TensorBase(np.array(new __pythonRuntime.objects.list(2)))));
@@ -473,24 +383,6 @@ class baddbmmTests {
 	}
 }
 function test_baddbmm_() {
-	var __params62 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex62 = 0;
-	var __args62 = arguments;
-	function __getParam62(v, d) {
-		var r = d;
-		if (__params62) {
-			if (__formalsIndex62 < __params62.formals.length) {
-				r = __params62.formals[__formalsIndex62++];
-			} else if ((v in __params62.keywords)) {
-				r = __params62.keywords[v];
-				delete __params62.keywords[v];
-			}
-		} else if (__formalsIndex62 < __args62.length) {
-			r = __args62[__formalsIndex62++];
-		}
-		return r;
-	}
-	var self = __getParam62("self");
 	var t1 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 4), new __pythonRuntime.objects.list(5, 6)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(7, 8), new __pythonRuntime.objects.list(1, 2)))));
 	var t2 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 5), new __pythonRuntime.objects.list(5, 7)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(7, 9), new __pythonRuntime.objects.list(1, 3)))));
 	var mat = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(2, 3), new __pythonRuntime.objects.list(3, 4)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(4, 5), new __pythonRuntime.objects.list(5, 6)))));
@@ -517,24 +409,6 @@ class transposeTests {
 var out3 = t1.transpose(1, 2);
 self.assertTrue(np.array_equal(out3.data, new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 5), new __pythonRuntime.objects.list(4, 6))), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(7, 1), new __pythonRuntime.objects.list(8, 2))));
 function test_transpose_() {
-	var __params65 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex65 = 0;
-	var __args65 = arguments;
-	function __getParam65(v, d) {
-		var r = d;
-		if (__params65) {
-			if (__formalsIndex65 < __params65.formals.length) {
-				r = __params65.formals[__formalsIndex65++];
-			} else if ((v in __params65.keywords)) {
-				r = __params65.keywords[v];
-				delete __params65.keywords[v];
-			}
-		} else if (__formalsIndex65 < __args65.length) {
-			r = __args65[__formalsIndex65++];
-		}
-		return r;
-	}
-	var self = __getParam65("self");
 	var t1 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 4), new __pythonRuntime.objects.list(5, 6)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(7, 8), new __pythonRuntime.objects.list(1, 2)))));
 	t1.transpose_(0, 1);
 	self.assertTrue(np.array_equal(t1.data, new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 4), new __pythonRuntime.objects.list(7, 8))), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(5, 6), new __pythonRuntime.objects.list(1, 2))));
@@ -546,24 +420,6 @@ var t3 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntim
 t3.transpose_(1, 2);
 self.assertTrue(np.array_equal(t3.data, new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 5), new __pythonRuntime.objects.list(4, 6))), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(7, 1), new __pythonRuntime.objects.list(8, 2))));
 function test_t() {
-	var __params66 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex66 = 0;
-	var __args66 = arguments;
-	function __getParam66(v, d) {
-		var r = d;
-		if (__params66) {
-			if (__formalsIndex66 < __params66.formals.length) {
-				r = __params66.formals[__formalsIndex66++];
-			} else if ((v in __params66.keywords)) {
-				r = __params66.keywords[v];
-				delete __params66.keywords[v];
-			}
-		} else if (__formalsIndex66 < __args66.length) {
-			r = __args66[__formalsIndex66++];
-		}
-		return r;
-	}
-	var self = __getParam66("self");
 	var t1 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 4), new __pythonRuntime.objects.list(5, 6)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(7, 8), new __pythonRuntime.objects.list(1, 2)))));
 	var out1 = t1.t();
 	self.assertTrue(np.array_equal(out1.data, new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 4), new __pythonRuntime.objects.list(7, 8))), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(5, 6), new __pythonRuntime.objects.list(1, 2))));
@@ -624,24 +480,6 @@ class expTests {
 	self.assertTrue(np.allclose(out.data, new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(2.71828183e+00, 2.00855369e+01), new __pythonRuntime.objects.list(2.00855369e+01, 1.48413159e+02))), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(1.48413159e+02, 1.09663316e+03), new __pythonRuntime.objects.list(8.10308393e+03, 2.71828183e+00))));
 }
 function test_exp_() {
-	var __params70 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex70 = 0;
-	var __args70 = arguments;
-	function __getParam70(v, d) {
-		var r = d;
-		if (__params70) {
-			if (__formalsIndex70 < __params70.formals.length) {
-				r = __params70.formals[__formalsIndex70++];
-			} else if ((v in __params70.keywords)) {
-				r = __params70.keywords[v];
-				delete __params70.keywords[v];
-			}
-		} else if (__formalsIndex70 < __args70.length) {
-			r = __args70[__formalsIndex70++];
-		}
-		return r;
-	}
-	var self = __getParam70("self");
 	var t3 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(1, 3), new __pythonRuntime.objects.list(3, 5))), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(5, 7), new __pythonRuntime.objects.list(9, 1))));
 }
 t3.exp_();
@@ -1574,24 +1412,6 @@ var t1_unfolded_actual_2 = t1.unfold(-1, 1, 2).to_numpy();
 var t1_unfolded_expected_2 = np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(1), new __pythonRuntime.objects.list(3)));
 self.assertTrue(np.array_equal(t1_unfolded_expected_2), t1_unfolded_actual_2);
 function unfold_test_big() {
-	var __params221 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex221 = 0;
-	var __args221 = arguments;
-	function __getParam221(v, d) {
-		var r = d;
-		if (__params221) {
-			if (__formalsIndex221 < __params221.formals.length) {
-				r = __params221.formals[__formalsIndex221++];
-			} else if ((v in __params221.keywords)) {
-				r = __params221.keywords[v];
-				delete __params221.keywords[v];
-			}
-		} else if (__formalsIndex221 < __args221.length) {
-			r = __args221[__formalsIndex221++];
-		}
-		return r;
-	}
-	var self = __getParam221("self");
 	var arr = np.array();
 	new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(1, 3), new __pythonRuntime.objects.list(2, 4), new __pythonRuntime.objects.list(0, 2), new __pythonRuntime.objects.list(1, 4)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(1, 3), new __pythonRuntime.objects.list(0, 0), new __pythonRuntime.objects.list(1, 2), new __pythonRuntime.objects.list(2, 1)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(3, 1), new __pythonRuntime.objects.list(2, 2), new __pythonRuntime.objects.list(1, 0), new __pythonRuntime.objects.list(2, 1)));
 	new __pythonRuntime.objects.tuple(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(4, 1), new __pythonRuntime.objects.list(4, 1), new __pythonRuntime.objects.list(0, 2), new __pythonRuntime.objects.list(0, 4)), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(4, 4), new __pythonRuntime.objects.list(2, 2), new __pythonRuntime.objects.list(0, 1), new __pythonRuntime.objects.list(1, 3)));

@@ -32,112 +32,22 @@ class DiagTests {
 	}
 }
 function test_one_dim_tensor_upper_diag() {
-	var __params6 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex6 = 0;
-	var __args6 = arguments;
-	function __getParam6(v, d) {
-		var r = d;
-		if (__params6) {
-			if (__formalsIndex6 < __params6.formals.length) {
-				r = __params6.formals[__formalsIndex6++];
-			} else if ((v in __params6.keywords)) {
-				r = __params6.keywords[v];
-				delete __params6.keywords[v];
-			}
-		} else if (__formalsIndex6 < __args6.length) {
-			r = __args6[__formalsIndex6++];
-		}
-		return r;
-	}
-	var self = __getParam6("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(1, 2, 3, 4)));
 	self.assertTrue(syft.equal(syft.diag(t, 1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0)), new __pythonRuntime.objects.tuple(0, 0, 0, 3, 0))])[__pythonRuntime.ops.subscriptIndex(syft.equal(syft.diag(t, 1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0)), new __pythonRuntime.objects.tuple(0, 0, 0, 3, 0))]), new __pythonRuntime.objects.tuple(0, 0, 0, 0, 4))])[__pythonRuntime.ops.subscriptIndex(self.assertTrue(syft.equal(syft.diag(t, 1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0)), new __pythonRuntime.objects.tuple(0, 0, 0, 3, 0))])[__pythonRuntime.ops.subscriptIndex(syft.equal(syft.diag(t, 1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1, 0, 0, 0)), new __pythonRuntime.objects.list(0, 0, 2, 0, 0)), new __pythonRuntime.objects.tuple(0, 0, 0, 3, 0))]), new __pythonRuntime.objects.tuple(0, 0, 0, 0, 4))]), new __pythonRuntime.objects.tuple(0, 0, 0, 0, 0))];
 }
 function test_one_dim_tensor_below_diag() {
-	var __params7 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex7 = 0;
-	var __args7 = arguments;
-	function __getParam7(v, d) {
-		var r = d;
-		if (__params7) {
-			if (__formalsIndex7 < __params7.formals.length) {
-				r = __params7.formals[__formalsIndex7++];
-			} else if ((v in __params7.keywords)) {
-				r = __params7.keywords[v];
-				delete __params7.keywords[v];
-			}
-		} else if (__formalsIndex7 < __args7.length) {
-			r = __args7[__formalsIndex7++];
-		}
-		return r;
-	}
-	var self = __getParam7("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(1, 2, 3, 4)));
 	self.assertTrue(syft.equal(syft.diag(t, -1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0)), new __pythonRuntime.objects.tuple(0, 2, 0, 0, 0))])[__pythonRuntime.ops.subscriptIndex(syft.equal(syft.diag(t, -1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0)), new __pythonRuntime.objects.tuple(0, 2, 0, 0, 0))]), new __pythonRuntime.objects.tuple(0, 0, 3, 0, 0))])[__pythonRuntime.ops.subscriptIndex(self.assertTrue(syft.equal(syft.diag(t, -1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0)), new __pythonRuntime.objects.tuple(0, 2, 0, 0, 0))])[__pythonRuntime.ops.subscriptIndex(syft.equal(syft.diag(t, -1), TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0))[__pythonRuntime.ops.subscriptIndex(TensorBase(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 0, 0, 0, 0)), new __pythonRuntime.objects.list(1, 0, 0, 0, 0)), new __pythonRuntime.objects.tuple(0, 2, 0, 0, 0))]), new __pythonRuntime.objects.tuple(0, 0, 3, 0, 0))]), new __pythonRuntime.objects.tuple(0, 0, 0, 4, 0))];
 }
 function test_two_dim_tensor_main_diag() {
-	var __params8 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex8 = 0;
-	var __args8 = arguments;
-	function __getParam8(v, d) {
-		var r = d;
-		if (__params8) {
-			if (__formalsIndex8 < __params8.formals.length) {
-				r = __params8.formals[__formalsIndex8++];
-			} else if ((v in __params8.keywords)) {
-				r = __params8.keywords[v];
-				delete __params8.keywords[v];
-			}
-		} else if (__formalsIndex8 < __args8.length) {
-			r = __args8[__formalsIndex8++];
-		}
-		return r;
-	}
-	var self = __getParam8("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1), new __pythonRuntime.objects.list(2, 3))));
 	self.assertTrue(syft.equal(syft.diag(t, 0), TensorBase(new __pythonRuntime.objects.list(0, 3))));
 }
 function test_two_dim_tensor_upper_diag() {
-	var __params9 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex9 = 0;
-	var __args9 = arguments;
-	function __getParam9(v, d) {
-		var r = d;
-		if (__params9) {
-			if (__formalsIndex9 < __params9.formals.length) {
-				r = __params9.formals[__formalsIndex9++];
-			} else if ((v in __params9.keywords)) {
-				r = __params9.keywords[v];
-				delete __params9.keywords[v];
-			}
-		} else if (__formalsIndex9 < __args9.length) {
-			r = __args9[__formalsIndex9++];
-		}
-		return r;
-	}
-	var self = __getParam9("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1), new __pythonRuntime.objects.list(2, 3))));
 	self.assertTrue(syft.equal(syft.diag(t, 1), TensorBase(new __pythonRuntime.objects.list(1))));
 }
 function test_two_dim_tensor_below_diag() {
-	var __params10 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex10 = 0;
-	var __args10 = arguments;
-	function __getParam10(v, d) {
-		var r = d;
-		if (__params10) {
-			if (__formalsIndex10 < __params10.formals.length) {
-				r = __params10.formals[__formalsIndex10++];
-			} else if ((v in __params10.keywords)) {
-				r = __params10.keywords[v];
-				delete __params10.keywords[v];
-			}
-		} else if (__formalsIndex10 < __args10.length) {
-			r = __args10[__formalsIndex10++];
-		}
-		return r;
-	}
-	var self = __getParam10("self");
 	var t = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(0, 1), new __pythonRuntime.objects.list(2, 3))));
 	self.assertTrue(syft.equal(syft.diag(t, -1), TensorBase(new __pythonRuntime.objects.list(2))));
 }
@@ -204,47 +114,11 @@ class MatmulTests {
 }
 self.assertTrue(syft.equal(syft.matmul(t1, t2), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(5.8, 6.5)), new __pythonRuntime.objects.list(7.8, 8.9)));
 function test_matmul_2d_int() {
-	var __params20 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex20 = 0;
-	var __args20 = arguments;
-	function __getParam20(v, d) {
-		var r = d;
-		if (__params20) {
-			if (__formalsIndex20 < __params20.formals.length) {
-				r = __params20.formals[__formalsIndex20++];
-			} else if ((v in __params20.keywords)) {
-				r = __params20.keywords[v];
-				delete __params20.keywords[v];
-			}
-		} else if (__formalsIndex20 < __args20.length) {
-			r = __args20[__formalsIndex20++];
-		}
-		return r;
-	}
-	var self = __getParam20("self");
 	var t1 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(1, 2)), new __pythonRuntime.objects.list(3, 4)));
 }
 var t2 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(5, 6)), new __pythonRuntime.objects.list(7, 8)));
 self.assertTrue(syft.equal(syft.matmul(t1, t2), new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(19, 22)), new __pythonRuntime.objects.list(43, 50)));
 function test_matmul_2d_float() {
-	var __params21 = arguments.length === 1 && arguments[0].formals && arguments[0].keywords ? arguments[0] : null;
-	var __formalsIndex21 = 0;
-	var __args21 = arguments;
-	function __getParam21(v, d) {
-		var r = d;
-		if (__params21) {
-			if (__formalsIndex21 < __params21.formals.length) {
-				r = __params21.formals[__formalsIndex21++];
-			} else if ((v in __params21.keywords)) {
-				r = __params21.keywords[v];
-				delete __params21.keywords[v];
-			}
-		} else if (__formalsIndex21 < __args21.length) {
-			r = __args21[__formalsIndex21++];
-		}
-		return r;
-	}
-	var self = __getParam21("self");
 	var t1 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(1.3, 2.5)), new __pythonRuntime.objects.list(3.4, 4.5)));
 }
 t2 = TensorBase(np.array(new __pythonRuntime.objects.list(new __pythonRuntime.objects.list(5.8, 6.5)), new __pythonRuntime.objects.list(7.8, 8.9)));
